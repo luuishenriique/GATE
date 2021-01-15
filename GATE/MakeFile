@@ -5,3 +5,19 @@ init:
      nano .env
      php artisan migrate:fresh --seed
      php artisan serve
+     
+     git-Gabriella
+         git config --global user.nome "GabriellaBatista"
+         git config --global user.email "Gabriella10batista@gmail.com"
+         
+      git-Maria Eduarda
+         git config --global user.nome "Eduarda19"
+         git config --global user.email "Mariaeduardaj585@gmail.com
+         
+      git-Maria Conceição
+         git config --global user.nome "Maria617"
+         git config --global user.email "Mariac4682@gmail.com"
+         
+
+         
+
