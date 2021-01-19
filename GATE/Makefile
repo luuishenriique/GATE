@@ -1,4 +1,5 @@
 init:
+	cp .env.example .env
 	composer install
 	php artisan key:generate
 	nano .env
