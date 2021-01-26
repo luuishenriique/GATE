@@ -4,6 +4,8 @@
  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
     <title>GATE</title>
 
     <style>
@@ -106,7 +108,6 @@
             box-shadow: 2px 2px 4px #888888;
         }
     </style>
-
 </head>
 <body>
     <header>
@@ -138,33 +139,35 @@
             <div>
                     <x-label for="name" :value="__('Nome')" />
 
-                    <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                    <x-input id="name" class="block mt-1 w-full" placeholder="Seu nome" type="text" name="name" :value="old('name')" required autofocus />
                 </div>
 
                 <div>
                     <x-label for="username" :value="__('Nome de usuário')" />
 
-                    <x-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autofocus />
+                    <x-input id="username" class="block mt-1 w-full" placeholder="@Usuário" type="text" name="username" :value="old('username')" required autofocus />
                 </div>
 
                 <div>
                     <x-label for="phone" :value="__('Telefone')" />
 
-                    <x-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required/>
+                    <x-input id="phone" class="block mt-1 w-full" placeholder="(00) 00000-0000" phone-ddd-mask="(00) 00000-0000" type="text" name="phone" :value="old('phone')" required/>
+                    <script>$("#phone").mask("(99) 99999-9999")</script>
+                    
                 </div>
 
                 <!-- Email Address -->
                 <div class="mt-4">
                     <x-label for="email" :value="__('E-mail')" />
 
-                    <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                    <x-input id="email" class="block mt-1 w-full " placeholder="nome@exemplo.com" type="email" name="email" :value="old('email')" required />
                 </div>
 
                 <!-- Password -->
                 <div class="mt-4">
                     <x-label for="password" :value="__('Senha')" />
 
-                    <x-input id="password" class="block mt-1 w-full"
+                    <x-input id="password" class="block mt-1 w-full" placeholder="Sua senha"
                     type="password"
                     name="password"
                     required autocomplete="new-password" />
@@ -174,7 +177,7 @@
                 <div class="mt-4">
                     <x-label for="password_confirmation" :value="__('Confirme sua senha')" />
 
-                    <x-input id="password_confirmation" class="block mt-1 w-full"
+                    <x-input id="password_confirmation" class="block mt-1 w-full" placeholder="Repita sua senha"
                     type="password"
                     name="password_confirmation" required />
                 </div>
