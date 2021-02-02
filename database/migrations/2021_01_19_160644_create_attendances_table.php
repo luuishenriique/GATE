@@ -15,9 +15,10 @@ class CreateAttendancesTable extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
+            // $table->integer('status_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('service_id')->nullable();
             $table->string('description');
-            $table->integer('status_id');
-            $table->integer('user_id');
             $table->timestamps();
         });
     }
