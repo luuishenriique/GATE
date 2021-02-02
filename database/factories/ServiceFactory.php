@@ -22,7 +22,7 @@ class ServiceFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'description' => $this->faker->sentence(3),
         ];
     }
 }

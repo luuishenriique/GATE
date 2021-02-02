@@ -15,8 +15,11 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->integer('equipment_id');
-            $table->integer('user_id');
+            $table->unsignedBigInteger('equipment_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('status_id')->nullable();
+            $table->unsignedBigInteger('support_id')->nullable();
+            $table->string('description', 255);
             $table->dateTime('ended_at', $precision = 0)->nullable();
             $table->timestamps();
         });
