@@ -22,9 +22,12 @@ class EquipmentFactory extends Factory
     public function definition()
     {
         return [
+            'name' => $this->faker->word,
+            'tomb_id' => $this->faker->randomNumber(7, true),
             'model' => $this->faker->bothify('????-###'),
             'manufacturer' => $this->faker->word,
             'description' => $this->faker->sentence(3),
+            // 'user_id' => $this->faker->randomDigit(1,10)
         ];
     }
 }
