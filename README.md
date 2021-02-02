@@ -38,6 +38,11 @@ O **GATE** (**G**estor de **A**tivos **T**ecnológicos **E**mpresariais), tem co
 ## Tecnologias Utilizadas
 
 - Integração de QR Code via HTML5 e JavaScript -> https://github.com/schmich/instascan
+- NodeJS -> https://nodejs.org/en/
+- Laravel 8 -> https://laravel.com/
+- PHP -> https://www.php.net/manual/pt_BR/intro-whatis.php
+- Javascript -> https://developer.mozilla.org/pt-BR/docs/Web/JavaScript
+- Mysql Server -> https://dev.mysql.com/doc/
 
       Observação: Quaisquer outras tecnologias usadas serão adicionadas aqui em breve.
 
@@ -45,8 +50,13 @@ O **GATE** (**G**estor de **A**tivos **T**ecnológicos **E**mpresariais), tem co
 
 ### Debian/Ubuntu
       
-      Manual de instalação será colocado em breve!
-      
+```bash
+sudo apt-get install git -y
+sudo apt-get install make -y
+git clone https://github.com/luuishenriique/GATE
+cd GATE/
+make init
+```      
 ### Windows
       
       Manual de instalação será colocado em breve!
