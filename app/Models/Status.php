@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Status extends Model
 {
     use HasFactory;
+
+    public function attedance()
+    {
+    	return $this->belongsTo(Attendance::class);
+    }
 }
