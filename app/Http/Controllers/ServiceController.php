@@ -18,9 +18,9 @@ class ServiceController extends Controller
     public function index()
     {
         //
-        $services = DB::select('select * from services where user_id = :id order by :item' , ['id' => Auth::user()->id] ['item'] => );
+        // $services = DB::select('select * from services where user_id = :id order by :item' , ['id' => Auth::user()->id] ['item'] => );
 
-        return view('dashboard', ['services' => $services]);
+        // return view('dashboard', ['services' => $services]);
     }
 
     /**
