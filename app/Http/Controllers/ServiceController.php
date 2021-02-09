@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -15,6 +18,9 @@ class ServiceController extends Controller
     public function index()
     {
         //
+        $services = DB::select('select * from services where user_id = :id order by :item' , ['id' => Auth::user()->id] ['item'] => );
+
+        return view('dashboard', ['services' => $services]);
     }
 
     /**
@@ -36,6 +42,20 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'equipment_id' => 'required',
+            'status_id' => 'required',
+            'description' => 'required',
+        ]);
+
+        Service::create([
+            'equipment_id' => $request->equipment_id,
+            'user_id' => Auth::user()->id,
+            'status_id' => $request->status_id,
+            'description' => $request->description,
+        ]);
+
+        return redirect('dashboard');
     }
 
     /**
@@ -81,5 +101,8 @@ class ServiceController extends Controller
     public function destroy(Service $service)
     {
         //
+        $service->delete();
+
+        return redirect('dashboard');
     }
 }

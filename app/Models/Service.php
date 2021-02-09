@@ -17,6 +17,9 @@ class Service extends Model
     protected $fillable = [
         'equipment_id',
         'description',
+        'user_id',
+        'status_id',
+        'support_id',
     ];
 
     // Relationships
