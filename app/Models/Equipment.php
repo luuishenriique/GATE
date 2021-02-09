@@ -18,6 +18,9 @@ class Equipment extends Model
         'model',
         'manufacturer',
         'description',
+        'user_id',
+        'name',
+        'tomb_id',
     ];
 
     public function user()

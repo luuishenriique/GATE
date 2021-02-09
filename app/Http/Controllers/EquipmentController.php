@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Equipment;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 
 class EquipmentController extends Controller
@@ -36,6 +39,24 @@ class EquipmentController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required',
+            'tomb_id' => 'required',
+            'description' => 'required',
+            'model' => 'required',
+            'manufacturer' => 'required',
+        ]);
+
+        Equipment::create([
+            'name' => $request->name,
+            'user_id' => Auth::user()->id,
+            'tomb_id' => $request->tomb_id,
+            'description' => $request->description,
+            'model' => $request->model,
+            'manufacturer' => $request->manufacturer,
+        ]);
+
+        return redirect('dashboard/support');
     }
 
     /**
