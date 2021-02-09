@@ -175,8 +175,38 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <a href="{{ route('services') }}" class="button1">Abrir um chamado</a>
+                    <br>
+                    <br>
+                    <div class="block text-center textx1 pb-3">
+                        <h1> Histórico de Chamados </h1>
+                    </div>
+                    <!-- Colocar para avisar quando não tiver chamados em aberto -->
+                    <br>
+                    <br>
+                    <!-- Gerando lista de chamados de usuário -->
+                    @foreach(Auth::user()-> services as $service)   
+                     <div class="p-3 border">
+                         @if($service->status_id < 2)
+                         <div class="mt-3 px-2 border-b">Id do chamado -> {{ $service->id}} | Id do Equipamento -> {{ $service->equipment_id}} | Problema -> {{ $service->description}} | Situação -> Em análise</div>
+                         @elseif($service->status_id > 2)
+                         <div class="mt-3 px-2 border-b">Id do chamado -> {{ $service->id}} | Id do Equipamento -> {{ $service->equipment_id}} | Problema -> {{ $service->description}} | Situação -> Encerrado</div>
+                         @else
+                         <div class="mt-3 px-2 border-b">Id do chamado -> {{ $service->id}} | Id do Equipamento -> {{ $service->equipment_id}} | Problema -> {{ $service->description}} | Situação -> Aberto</div>
+                         @endif
+                          <div class="grid grid-cols-3 text-center">
+                          <a class="bg-green-200 rounded-bl-lg hover:bg-green-300" href="">Ver mais</a>
+                          <a class="bg-yellow-200 hover:bg-yellow-300" href="">Editar</a>
+                          <a class="bg-red-200 rounded-br-lg hover:bg-red-300" href="{{ route('rm-service', $service)}}">Excluir</a>
+                          <!-- Lembrar de colocar confirmação de exclusão e testar se não está aberto o chamado -->
+                        </div>
+                     </div>
+                     @endforeach
+
+<!--                     @foreach(Auth::user()-> equipments as $equip)
+                        {{$equip->description}}
+                    @endforeach -->
                 </div>
             </div>
         </div>
-    </div>
+    </div>  
 </x-app-layout>

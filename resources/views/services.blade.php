@@ -136,22 +136,34 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('add-service') }}">
             @csrf
 
-            <!-- Name -->
-            <div>
-                    <x-label for="code" :value="__('Código')" />
-
-                    <x-input id="code" class="block mt-1 w-full" placeholder="Código do chamado" type="text" name="code" :value="old('code')" required autofocus />
-                </div>
-
+            <!-- Id do equipamento -->
                 <div>
-                    <x-label for="descripition" :value="__('Descrição')" />
+                    <x-label for="equipment_id" :value="__('Código')" />
 
-                    <x-input id="descripition" class="block mt-1 w-full" placeholder="Descreva seu problema" type="text" name="descripition" :value="old('descripition')" required autofocus />
+                    <x-input id="equipment_id" class="block mt-1 w-full" placeholder="Código do equipamento" type="text" name="equipment_id" :value="old('equipment_id')" required autofocus />
                 </div>
+                <!-- Usuário -->
+                <div>
+                    <x-label for="user_id" :value="__('Usuário')" class="hidden"/>
 
+                    <x-input id="user_id" class="hidden block mt-1 w-full" placeholder="Usuário" type="text" name="user_id" :value="old('user_id')" />
+                </div>
+                <!-- Status -->
+                <div>
+                    <x-label for="status_id" :value="__('Status')" class="hidden"/>
+
+                    <x-input id="status_id" class="hidden block mt-1 w-full" placeholder="Status" type="number" name="status_id" :value="1" required />
+                </div>
+                <!-- Descrição -->
+                <div>
+                    <x-label for="description" :value="__('Descrição')" />
+
+                    <x-input id="description" class="block mt-1 w-full" placeholder="Descreva seu problema" type="text" name="description" :value="old('description')" required autofocus />
+                </div>
+                <!-- Botão de cadastro -->
                 <div class="flex items-center justify-end mt-4">
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                         {{ __('') }}
