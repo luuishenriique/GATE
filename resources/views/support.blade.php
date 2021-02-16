@@ -175,16 +175,14 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <a href="{{ route('equipments') }}" class="button1">Adicionar equipamento</a>
+                    <a href="{{ route('equipments_list') }}" class="button1">Ver equipamentos</a>
                     <br>
                     <br>
-                    <div class="block text-center textx1 pb-3">
-                        <h1> Histórico de Chamados (Suporte)</h1>
-                    </div>
                     <!-- Colocar para avisar quando não tiver chamados em aberto -->
-                    <form method="POST" action="{{ route('dashboard') }}">
+                    <form method="GET" action="{{ route('dashboard') }}">
                     @csrf
                     <div>
-                        <select>
+                        <select name="slc-src" id="val" class="full block rounded-mg">
                             <option disabled selected >Selecione uma opção de pesquisa</option>
                             <option value="id">Id</option>
                             <option value="equipment_id">Equipamento</option>
@@ -194,14 +192,28 @@
                             <option value="updated_at">Última atualização</option>
                         </select>
                     </div>
-                    <div class="p-6 bg-white border-b border-gray-200">
-                    <a href="{{ route('dashboard') }}" class="button1">Pesquisar</a>
-                    </div>
+                <div class="flex items-center justify-end mt-4">
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900">
+                        {{ __('') }}
+                    </a>
+
+                    <x-button class="ml-4">
+                        {{ __('Pesquisar') }}
+                    </x-button>
+                </div>
                     </form>
+                    <div class="block text-center textx1 pb-3">
+                        <h2>Chamados em atendimento</h2>
+                    </div>
                     <br>
                     <br>
                     <!-- Gerando lista de chamados de usuário -->
-                    @foreach(Auth::user()-> services as $service)   
+                    @php
+                        $val = $_GET['slc-src'] ?? '';
+                        $services = Auth::user()->services;
+                        $services_not_open = App\Models\Service::where('status_id', 1)->get();
+                    @endphp
+                    @foreach($services as $service)   
                      <div class="p-3 border">
                          @if($service->status_id < 2)
                          <div class="mt-3 px-2 border-b">Id do chamado -> {{ $service->id}} | Id do Equipamento -> {{ $service->equipment_id}} | Problema -> {{ $service->description}} | Situação -> Em análise</div>
@@ -218,12 +230,21 @@
                         </div>
                      </div>
                      @endforeach
-
-<!--                     @foreach(Auth::user()-> equipments as $equip)
-                        {{$equip->description}}
-                    @endforeach -->
+                     <br>
+                     <br>
+                     <div>
+                         <h2>Chamados em análise para atendimento</h2>
+                     </div>
+                     @foreach($services_not_open as $service)   
+                     <div class="p-3 border">
+                       <div class="mt-3 px-2 border-b">Id do chamado -> {{ $service->id}} | Id do Equipamento -> {{ $service->equipment_id}} | Problema -> {{ $service->description}} | Situação -> Em análise</div>
+                       <div class="grid grid-cols-3 text-center">
+                          <a class="bg-green-200 rounded-bl-lg hover:bg-green-300" href="">Ver mais</a>
+                          <a class="bg-yellow-200 hover:bg-yellow-300" href="">Editar</a>
+                          <a class="bg-red-200 rounded-br-lg hover:bg-red-300" onclick="javascript: if (confirm('Você realmente deseja excluir este chamado?'))location.href='{{ route('rm-service', $service)}}'" >Excluir</a>
                 </div>
             </div>
+        @endforeach
         </div>
     </div>  
 </x-app-layout>
