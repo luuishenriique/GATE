@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Equipment;
 use App\Models\User;
+use App\Models\Service;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
@@ -49,11 +50,12 @@ class EquipmentController extends Controller
 
         Equipment::create([
             'name' => $request->name,
-            'user_id' => Auth::user()->id,
+            'support_id' => Auth::user()->id,
             'tomb_id' => $request->tomb_id,
             'description' => $request->description,
             'model' => $request->model,
             'manufacturer' => $request->manufacturer,
+            'status' => 0,
         ]);
 
         return redirect('dashboard/support');
@@ -101,6 +103,9 @@ class EquipmentController extends Controller
      */
     public function destroy(Equipment $equipment)
     {
-        //
+        $teste = Service::where('equipment_id', $equipment)->get();
+
+        $equipment->delete();
+        return view('equipments_list');
     }
 }
