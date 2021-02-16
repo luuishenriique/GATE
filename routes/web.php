@@ -40,14 +40,21 @@ Route::get('/equipments', function () {
     return view('equipments');
 })->middleware(['auth'])->name('equipments');
 
+Route::get('/equipments_list', function () {
+    return view('equipments_list');
+})->middleware(['auth'])->name('equipments_list');
+
 Route::post('/services',[ServiceController::class, 'store'])->name('add-service');
 
 Route::post('/equipments',[EquipmentController::class, 'store'])->name('add-equipment');
 
-Route::get('/dashboard/delete/{service}',[ServiceController::class, 'destroy'])->name('rm-service');
-Route::model('service', Service::class);
+// Route::model('equipment', Equipment::class);
+Route::get('/dashboard/{equipment}',[EquipmentController::class, 'destroy'])->name('rm-equipment');
 
-Route::post('/dashboard',[ServiceController::class, 'index'])->name('src-service');
 Route::model('service', Service::class);
+Route::get('/dashboard/delete/{service}',[ServiceController::class, 'destroy'])->name('rm-service');
+
+Route::model('service', Service::class);
+Route::post('/dashboard',[ServiceController::class, 'index'])->name('src-service');
 
 require __DIR__.'/auth.php';
