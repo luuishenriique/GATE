@@ -27,7 +27,7 @@ class EquipmentFactory extends Factory
             'model' => $this->faker->bothify('????-###'),
             'manufacturer' => $this->faker->word,
             'description' => $this->faker->sentence(3),
-            // 'user_id' => $this->faker->randomDigit(1,10)
+            'status' => $this->faker->numberBetween(0,1),
         ];
     }
 }
