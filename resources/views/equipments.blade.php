@@ -138,13 +138,6 @@
 
         <form method="POST" action="{{ route('add-equipment') }}">
             @csrf
-
-            <!-- Id do equipamento -->
-                <div>
-                    <x-label for="equipment_id" :value="__('Código')" />
-
-                    <x-input id="equipment_id" class="block mt-1 w-full" placeholder="Código do equipamento" type="text" name="equipment_id" :value="old('equipment_id')" required autofocus />
-                </div>
                 <!-- Nome -->
                 <div>
                     <x-label for="name" :value="__('Nome')" />
