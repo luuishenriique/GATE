@@ -64,6 +64,13 @@ Route::get('/show-equipment', function () {
 
 Route::get('/dashboard/equipments_list/show/{equipment}',[EquipmentController::class, 'show'])->name('show-equipment');
 
+Route::get('/show-service', function () {
+    return view('service_detail');
+})->middleware(['auth'])->name('service_detail');
+
+Route::model('service', Service::class);
+Route::get('/dashboard/show/{service}',[ServiceController::class, 'show'])->name('show-service');
+
 // Route::model('equipment', Equipment::class);
 Route::get('/dashboard/{equipment}',[EquipmentController::class, 'destroy'])->name('rm-equipment');
 
