@@ -58,6 +58,12 @@ Route::post('/services',[ServiceController::class, 'store'])->name('add-service'
 
 Route::post('/equipments',[EquipmentController::class, 'store'])->name('add-equipment');
 
+Route::get('/show-equipment', function () {
+    return view('equipment_detail');
+})->middleware(['auth'])->name('equipment_detail');
+
+Route::get('/dashboard/equipments_list/show/{equipment}',[EquipmentController::class, 'show'])->name('show-equipment');
+
 // Route::model('equipment', Equipment::class);
 Route::get('/dashboard/{equipment}',[EquipmentController::class, 'destroy'])->name('rm-equipment');
 

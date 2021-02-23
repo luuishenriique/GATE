@@ -125,7 +125,7 @@
                 <h3>ABRIR CHAMADO</h3>
                 <nav>
                     <ul>
-                        <li><a href="{{route('support')}}">Voltar</a></li>
+                        <li><a href="{{route('equipments_list')}}">Voltar</a></li>
                     </ul>
                 </nav>
             </div>
@@ -174,64 +174,47 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <a href="{{ route('equipments') }}" class="button1">Adicionar equipamento</a>
-                    <br>
-                    <br>
-                    <!-- Colocar para avisar quando não tiver chamados em aberto -->
-                    <form method="GET" action="{{ route('equipments_list') }}">
-                    @csrf
-                    <div>
-                        <select name="slc-src" id="val" class="full block rounded-mg">
-                            <option disabled selected >Selecione uma opção de pesquisa</option>
-                            <option value="id">Id</option>
-                            <option value="tomb_id">Código de Tombamento</option>
-                            <option value="name">Nome</option>
-                            <option value="model">Modelo</option>
-                            <option value="manufacturer">Fabricante</option>
-                            <option value="equipment_id">Equipamento</option>
-                            <option value="status">Status</option>
-                            <option value="description">Descrição</option>
-                            <option value="created_at">Data de início</option>
-                            <option value="updated_at">Última atualização</option>
-                        </select>
-                <div class="flex items-center justify-end mt-4">
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900">
-                        {{ __('') }}
-                    </a>
-
-                    <x-button class="ml-4">
-                        {{ __('Pesquisar') }}
-                    </x-button>
-                </div>
-                    </form>
-                    <br>
-                    <br>
-                    <!-- Gerando lista de chamados de usuário -->
-                    @php
-                        $val = $_GET['slc-src'] ?? '';
-                        $equipments = App\Models\Equipment::all()->sortBy($val);
-                    @endphp
-                     <div>
-                         <h2>Equipamentos cadastrados {{$val}}</h2> 
-                     </div>
-                     @foreach($equipments as $equipment)
-                     @php
-                     $chamados = App\Models\Service::where('equipment_id', $equipment->id)->get();
-                     @endphp 
-                     <div class="p-3 border">
-                        {{$chamados}}
-                       <div class="mt-3 px-2 border-b">Cód. do Equipamento -> {{ $equipment->id }} | Nome do Equipamento -> {{ $equipment->name }} | Cód. Tombamento -> {{ $equipment->tomb_id }} | Modelo -> {{ $equipment->model }} | Fabricante -> {{ $equipment->manufacturer }} | Descrição -> {{ $equipment->description }} | Status -> {{ $equipment->status }}</div>
-                       <div class="grid grid-cols-3 text-center">
-                          <a class="bg-green-200 rounded-bl-lg hover:bg-green-300" href="{{route('show-equipment', $equipment)}}">Ver mais</a>
-                          <a class="bg-yellow-200 hover:bg-yellow-300" href="">Editar</a>
-                          @if($equipment->status == 0)
-                          <a class="bg-red-200 rounded-br-lg hover:bg-red-300" onclick="javascript: if (confirm('Você realmente deseja excluir este Equipamento?'))location.href='{{ route('rm-equipment', $equipment)}}'" >Excluir</a>
-                          @else
-                          <a class="bg-red-200 rounded-br-lg hover:bg-red-300" onclick="javascript: if (alert('Você não pode excluir este Equipamento!'))location.href='{{ route('rm-equipment', $equipment)}}'" >Excluir</a>
-                          @endif
+                    <div class="block text-center textx1 pb-3">
+                        @php
+                        @endphp
+                        <h2>Detalhes do equipamento</h2>
+                        <br>
+                        <br>
+                        Id do equipamento -> 
+                        <br>
+                        Nome -> 
+                        <br>
+                        Código de Tombamento ->
+                        <br>
+                        Modelo ->
+                        <br>
+                        Fabricante ->
+                        <br>
+                        Data de registro ->
+                        <br>
+                        <br>
+                        <h2>Detalhes do chamado</h2>
+                        <br>
+                        <br>
+                        Nº do chamado - >
+                        <br>
+                        Data de criação -> 
+                        <br>
+                        Id do equipamento ->
+                        <br>
+                        Descrição do problema ->
+                        <br>
+                        <br>
+                        <br>
+                        <h2>Histórico de acompanhamento</h2>
+                        <br>
+                        <br>
+                        Última atualização ->
+                        <br>
+                        Descrição -> 
+                    </div>
                 </div>
             </div>
-            @endforeach
         </div>
     </div>  
 </x-app-layout>

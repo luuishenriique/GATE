@@ -70,6 +70,7 @@ class EquipmentController extends Controller
     public function show(Equipment $equipment)
     {
         //
+        return view('equipment_detail');
     }
 
     /**
@@ -92,7 +93,10 @@ class EquipmentController extends Controller
      */
     public function update(Request $request, Equipment $equipment)
     {
-        //
+        //Requests
+
+        //Validations 
+
     }
 
     /**
