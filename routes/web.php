@@ -26,7 +26,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/dashboard/support', function () {
     return view('support');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth'])->name('support');
 
 Route::get('/dashboard/adm', function () {
     return view('dashboard');
@@ -44,6 +44,16 @@ Route::get('/equipments_list', function () {
     return view('equipments_list');
 })->middleware(['auth'])->name('equipments_list');
 
+Route::get('/edit', function () {
+    return view('update');
+})->middleware(['auth'])->name('update');
+
+Route::model('service', Service::class);
+Route::get('/dashboard/edit/{service}',[ServiceController::class, 'edit'])->name('edit-service');
+
+Route::model('service', Service::class);
+Route::get('/dashboard/update/', [ServiceController::class, 'update'])->name('update-service');
+
 Route::post('/services',[ServiceController::class, 'store'])->name('add-service');
 
 Route::post('/equipments',[EquipmentController::class, 'store'])->name('add-equipment');
@@ -53,8 +63,5 @@ Route::get('/dashboard/{equipment}',[EquipmentController::class, 'destroy'])->na
 
 Route::model('service', Service::class);
 Route::get('/dashboard/delete/{service}',[ServiceController::class, 'destroy'])->name('rm-service');
-
-Route::model('service', Service::class);
-Route::post('/dashboard',[ServiceController::class, 'index'])->name('src-service');
 
 require __DIR__.'/auth.php';

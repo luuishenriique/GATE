@@ -77,7 +77,8 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        //  
+        return view('update');
     }
 
     /**
@@ -89,7 +90,11 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+        $service->equipment_id = $request->equipment_id;
+        $service->description = $request->description;
+        $service->update();
+
+        return view('support');
     }
 
     /**
@@ -100,9 +105,12 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
         $service->delete();
 
-        return redirect('dashboard');
+        if (Auth::user()->is_support == 0) {
+            return view('dashboard');
+        } else {
+            return view('support');
+        }
     }
 }
