@@ -247,7 +247,8 @@
                          @endif
                           <div class="grid grid-cols-3 text-center">
                           <a class="bg-green-200 rounded-bl-lg hover:bg-green-300" href="{{route('show-service', $service)}}">Ver mais</a>
-                          <a class="bg-red-200 rounded-br-lg hover:bg-red-300" href="{{ route('rm-service', $service)}}">Excluir</a>
+                          <a class="bg-blue-200 hover:bg-blue-300" href="{{route('new-attend', $service)}}">Atualizar Atendimento</a>
+                          <a class="bg-red-200 rounded-br-lg hover:bg-red-300" onclick="javascript: if (alert('Você não pode excluir um chamado em atendimento!'))location.href=''" >Excluir</a>
                           <!-- Lembrar de colocar confirmação de exclusão e testar se não está aberto o chamado -->
                         </div>
                      </div>
@@ -263,7 +264,7 @@
                        <div class="grid grid-cols-3 text-center">
                           <a class="bg-green-200 rounded-bl-lg hover:bg-green-300" href="{{route('show-service', $service)}}">Ver mais</a>
                           <a class="bg-yellow-200 hover:bg-yellow-300" href="{{ route('edit-service', $service )}}">Editar</a>
-                          <a class="bg-blue-200 hover:bg-blue-300" onclick="javascript: if (confirm('Você realmente deseja iniciar um atendimento para o chamado {{$service->id}}?'))location.href='" >Atender</a>
+                          <a class="bg-blue-200 rounded-br-lg hover:bg-blue-300" href="{{ route('show-attend', $service)}}'" >Atender</a>
                           <a class="bg-red-200 rounded-br-lg hover:bg-red-300" onclick="javascript: if (confirm('Você realmente deseja excluir este chamado?'))location.href='{{ route('rm-service', $service)}}'" >Excluir</a>
                 </div>
             </div>

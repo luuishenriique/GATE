@@ -187,13 +187,31 @@
                         Descrição do problema -> {{$service->description}}
                         <br>
                         <br>
-                        <br>
-                        <h2>Histórico de acompanhamento</h2>
-                        <br>
-                        <br>
-                        Última atualização ->
-                        <br>
-                        Descrição -> 
+                        <form method="POST" action="{{route('add-attend', $service)}}">
+                            @csrf
+                            <!-- Status -->
+                            <div>
+                                <x-label for="description" :value="__('Descrição de atualização')" />
+
+                                <x-input id="description" class="block mt-1 w-full" type="textarea" name="description" placeholder="Digite aqui" :value="old('description')" required autofocus />
+                            </div>
+                            <!-- Chamado Id -->
+                            <div>
+                                <x-input id="service_id" class="block mt-1 w-full" type="hidden" name="service_id" value="{{$service->id}}" required/>
+                            </div>
+                            <!-- Botão de atualizar -->
+                            <div class="flex items-center justify-end mt-4">
+                                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                                    {{ __('') }}
+                                </a>
+
+                                <x-button class="ml-4">
+                                    {{ __('Atualizar') }}
+                                </x-button>
+                            </div>
+                        </form>
+                            
+                        </form>
                     </div>
                 </div>
             </div>

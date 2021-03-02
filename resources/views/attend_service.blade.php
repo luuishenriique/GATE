@@ -187,13 +187,26 @@
                         Descrição do problema -> {{$service->description}}
                         <br>
                         <br>
-                        <br>
-                        <h2>Histórico de acompanhamento</h2>
-                        <br>
-                        <br>
-                        Última atualização ->
-                        <br>
-                        Descrição -> 
+                        <form method="POST" action="{{route('attend-service', $service)}}">
+                            @method('PUT')
+                            @csrf
+                            <!-- Status -->
+                            <div>
+                                <x-input id="status_id" class="block mt-1 w-full" type="hidden" name="status_id" :value="2" required autofocus />
+                            </div>
+                            <!-- Botão de atender -->
+                            <div class="flex items-center justify-end mt-4">
+                                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                                    {{ __('') }}
+                                </a>
+
+                                <x-button class="ml-4">
+                                    {{ __('Atender') }}
+                                </x-button>
+                            </div>
+                        </form>
+                            
+                        </form>
                     </div>
                 </div>
             </div>
