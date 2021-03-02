@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\EquipmentController;
 use App\Models\Service;
+use App\Models\Equipment;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,8 +49,17 @@ Route::get('/edit', function () {
     return view('update');
 })->middleware(['auth'])->name('update');
 
+Route::get('/edit-equipment', function () {
+    return view('update_equipment');
+})->middleware(['auth'])->name('update_equipment');
+
+Route::model('equipment', Equipment::class);
+Route::get('/dashboard/edit-equipment/{equipment}',[EquipmentController::class, 'edit'])->name('edit-equipment');
+
 Route::model('service', Service::class);
 Route::get('/dashboard/edit/{service}',[ServiceController::class, 'edit'])->name('edit-service');
+
+Route::put('/dashboard/update/{equipment}', [EquipmentController::class, 'update'])->name('update-equipment')->middleware(['auth']);
 
 // Route::model('service', Service::class);
 Route::put('/dashboard/update/{service}', [ServiceController::class, 'update'])->name('update-service')->middleware(['auth']);

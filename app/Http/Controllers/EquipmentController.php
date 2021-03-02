@@ -82,6 +82,7 @@ class EquipmentController extends Controller
     public function edit(Equipment $equipment)
     {
         //
+        return view('update_equipment',['equipment'=>$equipment]);
     }
 
     /**
@@ -96,6 +97,18 @@ class EquipmentController extends Controller
         //Requests
 
         //Validations 
+        $equipment->update([
+            'name' => $request->name,
+            'support_id' => Auth::user()->id,
+            'tomb_id' => $request->tomb_id,
+            'description' => $request->description,
+            'model' => $request->model,
+            'manufacturer' => $request->manufacturer,
+        ]);
+
+        $msg = "Equipamento alterado com sucesso!";
+
+        return view('equipments_list',['msg'=>$msg]);
 
     }
 

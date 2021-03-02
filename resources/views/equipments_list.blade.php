@@ -208,9 +208,13 @@
                     <br>
                     <!-- Gerando lista de chamados de usuário -->
                     @php
+                        $teste = $msg ?? '';
                         $val = $_GET['slc-src'] ?? '';
                         $equipments = App\Models\Equipment::all()->sortBy($val);
                     @endphp
+                    @if($teste != '')
+                    <script>alert("{{$teste}}");</script>
+                    @endif
                      <div>
                          <h2>Equipamentos cadastrados {{$val}}</h2> 
                      </div>
@@ -223,15 +227,16 @@
                        <div class="mt-3 px-2 border-b">Cód. do Equipamento -> {{ $equipment->id }} | Nome do Equipamento -> {{ $equipment->name }} | Cód. Tombamento -> {{ $equipment->tomb_id }} | Modelo -> {{ $equipment->model }} | Fabricante -> {{ $equipment->manufacturer }} | Descrição -> {{ $equipment->description }} | Status -> {{ $equipment->status }}</div>
                        <div class="grid grid-cols-3 text-center">
                           <a class="bg-green-200 rounded-bl-lg hover:bg-green-300" href="{{route('show-equipment', $equipment)}}">Ver mais</a>
-                          <a class="bg-yellow-200 hover:bg-yellow-300" href="">Editar</a>
                           @if($equipment->status == 0)
+                          <a class="bg-yellow-200 hover:bg-yellow-300" href="{{route('edit-equipment', $equipment)}}">Editar</a>
                           <a class="bg-red-200 rounded-br-lg hover:bg-red-300" onclick="javascript: if (confirm('Você realmente deseja excluir este Equipamento?'))location.href='{{ route('rm-equipment', $equipment)}}'" >Excluir</a>
                           @else
+                          <a class="bg-yellow-200 hover:bg-yellow-300" onclick="javascript: if (alert('Você não pode editar um equipamento em atendimento de chamado!'))location.href='{{ route('edit-equipment', $equipment)}}'">Editar</a>
                           <a class="bg-red-200 rounded-br-lg hover:bg-red-300" onclick="javascript: if (alert('Você não pode excluir este Equipamento!'))location.href='{{ route('rm-equipment', $equipment)}}'" >Excluir</a>
                           @endif
-                </div>
+                        </div>
+                    </div>
+                    @endforeach
             </div>
-            @endforeach
-        </div>
     </div>  
 </x-app-layout>
