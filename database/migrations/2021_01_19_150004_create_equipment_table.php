@@ -20,7 +20,8 @@ class CreateEquipmentTable extends Migration
             $table->string('model')->nullable();
             $table->string('manufacturer')->nullable();
             $table->string('description')->nullable();
-            $table->integer('user_id')->nullable();
+            $table->integer('support_id')->nullable();
+            $table->boolean('status')->nullable();
             $table->timestamps();
         });
     }

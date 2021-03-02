@@ -17,12 +17,13 @@ class AttendanceSeeder extends Seeder
      */
     public function run()
     {
-        $users = User::select('id')->where('is_support', '=', '1');
+        // $users = User::where('is_support', 0)->get();
+        // $support = User::where('is_support', 1)->get();
         $services = Service::all();
         foreach ($services as $service) {
         	Attendance::factory(1)->create([
         		'service_id' => $service->id,
-                'user_id' => User::all()->random()->id
+                // 'user_id' => User::all()->random()->id
         	]);
         }
     }

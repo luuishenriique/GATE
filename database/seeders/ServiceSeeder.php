@@ -18,15 +18,15 @@ class ServiceSeeder extends Seeder
      */
     public function run()
     {
-        // $equipments = Equipment::select('id');
-        // $attendances = Attendance::select('id');
-        // $users = User::all();
         $users = User::where('is_support', 0)->get();
+        $supports = User::where('is_support', 1)->get();
+        $status = Status::where('id', '<', 3)->get();
         foreach ($users as $user) {
         	Service::factory(1)->create([
         		'user_id' => $user->id,
-                'status_id' => Status::all()->random()->id,
+                'status_id' => $status->random()->id,
                 'equipment_id' => Equipment::all()->random()->id,
+                'support_id' => $supports->random()->id,
         	]);
         }
     }

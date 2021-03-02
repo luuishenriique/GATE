@@ -22,7 +22,7 @@ class StatusFactory extends Factory
     public function definition()
     {
         return [
-            'description' => $this->faker->sentence(3),
+            'description' => $this->faker->sentence(2),
         ];
     }
 }
