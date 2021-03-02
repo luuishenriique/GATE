@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\EquipmentController;
+use App\Http\Controllers\AttendanceController;
 use App\Models\Service;
 use App\Models\Equipment;
+use App\Models\Attendance;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,9 +66,14 @@ Route::put('/dashboard/update/{equipment}', [EquipmentController::class, 'update
 // Route::model('service', Service::class);
 Route::put('/dashboard/update/{service}', [ServiceController::class, 'update'])->name('update-service')->middleware(['auth']);
 
+Route::put('/dashboard/update-attend/{service}', [ServiceController::class, 'attend'])->name('attend-service')->middleware(['auth']);
+
 Route::post('/services',[ServiceController::class, 'store'])->name('add-service');
 
 Route::post('/equipments',[EquipmentController::class, 'store'])->name('add-equipment');
+
+Route::model('service', Service::class);
+Route::post('/attendances/{service}',[AttendanceController::class, 'store'])->name('add-attend');
 
 Route::get('/show-equipment', function () {
     return view('equipment_detail');
@@ -77,6 +84,20 @@ Route::get('/dashboard/equipments_list/show/{equipment}',[EquipmentController::c
 Route::get('/show-service', function () {
     return view('service_detail');
 })->middleware(['auth'])->name('service_detail');
+
+Route::get('/service-attend', function () {
+    return view('attend_service');
+})->middleware(['auth'])->name('attend_service');
+
+Route::get('/new-attend', function () {
+    return view('new_attend');
+})->middleware(['auth'])->name('new_attend');
+
+Route::model('service', Service::class);
+Route::get('/dashboard/attend-new/{service}',[ServiceController::class, 'newAttend'])->name('new-attend');
+
+Route::model('service', Service::class);
+Route::get('/dashboard/attend-show/{service}',[ServiceController::class, 'showAttend'])->name('show-attend');
 
 Route::model('service', Service::class);
 Route::get('/dashboard/show/{service}',[ServiceController::class, 'show'])->name('show-service');

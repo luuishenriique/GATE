@@ -45,7 +45,7 @@ class ServiceController extends Controller
         $request->validate([
             'equipment_id' => 'required',
             'status_id' => 'required',
-            'description' => 'required',
+            'description' => 'required ',
         ]);
 
         Service::create([
@@ -67,7 +67,31 @@ class ServiceController extends Controller
     public function show(Service $service)
     {
         //
-        return view('service_detail');
+        return view('service_detail',['service'=>$service]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Service  $service
+     * @return \Illuminate\Http\Response
+     */
+    public function showAttend(Service $service)
+    {
+        //
+        return view('attend_service',['service'=>$service]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Service  $service
+     * @return \Illuminate\Http\Response
+     */
+    public function newAttend(Service $service)
+    {
+        //
+        return view('new_attend',['service'=>$service]);
     }
 
     /**
@@ -98,7 +122,7 @@ class ServiceController extends Controller
 
         return view('support');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -114,5 +138,27 @@ class ServiceController extends Controller
         } else {
             return view('support');
         }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Service  $service
+     * @return \Illuminate\Http\Response
+     */
+    public function attend(Service $service)
+    {
+        // dd("pesquisando por " . $request->input);
+
+        // $search = Service::where('description', 'LIKE', '%' . $request->input . '%')->get();
+
+        // return view('support',['search', $search]);
+
+        $service->update([
+            'support_id' => Auth::user()->id,
+            'status_id' => 2,
+        ]);
+
+        return view('support');
     }
 }

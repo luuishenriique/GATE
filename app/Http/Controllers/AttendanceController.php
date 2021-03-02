@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendance;
+use App\Models\Service;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 
 class AttendanceController extends Controller
@@ -36,6 +39,17 @@ class AttendanceController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'description' => 'required',
+            'service_id' => 'required',
+        ]);
+
+        Attendance::create([
+            'description' => $request->description,
+            'service_id' => $request->service_id,
+        ]);
+
+        return redirect('dashboard\support');
     }
 
     /**

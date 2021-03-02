@@ -16,6 +16,7 @@ class Attendance extends Model
      */
     protected $fillable = [
         'description',
+        'service_id',
     ];
 
     // Relationships
