@@ -51,8 +51,8 @@ Route::get('/edit', function () {
 Route::model('service', Service::class);
 Route::get('/dashboard/edit/{service}',[ServiceController::class, 'edit'])->name('edit-service');
 
-Route::model('service', Service::class);
-Route::get('/dashboard/update/', [ServiceController::class, 'update'])->name('update-service');
+// Route::model('service', Service::class);
+Route::put('/dashboard/update/{service}', [ServiceController::class, 'update'])->name('update-service')->middleware(['auth']);
 
 Route::post('/services',[ServiceController::class, 'store'])->name('add-service');
 

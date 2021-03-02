@@ -136,20 +136,21 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{route('update-service')}}">
+        <form method="POST" action="{{route('update-service', $service)}}">
+            @method('PUT')
             @csrf
 
             <!-- Id do equipamento -->
                 <div>
                     <x-label for="equipment_id" :value="__('Código')" />
 
-                    <x-input id="equipment_id" class="block mt-1 w-full" placeholder="Código do equipamento" type="text" name="equipment_id" :value="old('equipment_id')" required autofocus />
+                    <x-input id="equipment_id" class="block mt-1 w-full" placeholder="Valor atual -> {{$service->equipment_id}}" type="text" name="equipment_id" :value="old('equipment_id')" required autofocus />
                 </div>
             <!-- Descrição -->
                 <div>
                     <x-label for="description" :value="__('Descrição')" />
 
-                    <x-input id="description" class="block mt-1 w-full" placeholder="Descreva seu problema" type="text" name="description" :value="old('description')" required autofocus />
+                    <x-input id="description" class="block mt-1 w-full" placeholder="Valor atual -> {{$service->description}}" type="text" name="description" :value="old('description')" required autofocus />
                 </div>
                 <!-- Botão de modificar -->
                 <div class="flex items-center justify-end mt-4">

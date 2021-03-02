@@ -79,7 +79,7 @@ class ServiceController extends Controller
     public function edit(Service $service)
     {
         //  
-        return view('update');
+        return view('update',['service'=>$service]);
     }
 
     /**
@@ -91,13 +91,14 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        $service->equipment_id = $request->equipment_id;
-        $service->description = $request->description;
-        $service->update();
+        $service->update([
+            'equipment_id' => $request->equipment_id,
+            'description' => $request->description,
+        ]);
 
         return view('support');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
