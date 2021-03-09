@@ -129,7 +129,7 @@
                 <div class="flex items-center justify-between w-full md:w-auto">
                   <a href="#">
                     <span class="sr-only">GATE</span>
-                    <img class="h-8 w-auto sm:h-24 mx-16" src="logo_gate2.png">
+                    <img class="h-8 w-auto sm:h-24 mx-16" src="../../logo_gate2.png">
                 </a>
                 <div class="-mr-2 flex items-center md:hidden">
                     <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" id="main-menu" aria-haspopup="true">
@@ -184,7 +184,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <a href="{{ route('equipments') }}" class="button1">Adicionar equipamento</a>
+                    <a href="{{ route('equipments') }}" class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-gradient-to-r from-gray-600 to-gray-900 transform hover:scale-110">Adicionar equipamento</a>
                     <br>
                     <br>
                     <!-- Colocar para avisar quando não tiver chamados em aberto -->
@@ -209,7 +209,7 @@
                         {{ __('') }}
                     </a>
 
-                    <x-button class="ml-4">
+                    <x-button class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-gradient-to-r from-gray-600 to-gray-900 transform hover:scale-110">
                         {{ __('Pesquisar') }}
                     </x-button>
                 </div>
@@ -228,18 +228,53 @@
                      <div>
                          <h2>Equipamentos cadastrados {{$val}}</h2> 
                      </div>
+    <div class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
+                    <table class="min-w-full">
+                        <thead>
+                            <tr>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center leading-4 text-gray-700 tracking-wider">Cód. do Equipamento</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Nome do Equipamento</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Cód. Tombamento</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Modelo</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Fabricante</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Descrição</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Status</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
                      @foreach($equipments as $equipment)
                      @php
                      $chamados = App\Models\Service::where('equipment_id', $equipment->id)->get();
                      $teste = strlen($chamados);
                      @endphp 
+                     
+
                      <div class="p-3 border">
                         @if($teste > 2)
+                     
+
                         <div class="text-center text-yellow-500">
                             <b>Há um chamado aberto para este equipamento!</b>
                         </div>
                         @endif
-                       <div class="mt-3 px-2 border-b">Cód. do Equipamento -> {{ $equipment->id }} | Nome do Equipamento -> {{ $equipment->name }} | Cód. Tombamento -> {{ $equipment->tomb_id }} | Modelo -> {{ $equipment->model }} | Fabricante -> {{ $equipment->manufacturer }} | Descrição -> {{ $equipment->description }} | Status -> {{ $equipment->status }}</div>
+                       
+                <div class="mt-3 px-2 border-b">
+                        <table class="min-w-full">
+                            <tr>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $equipment->id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $equipment->name}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $equipment->tomb_id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $equipment->model}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $equipment->manufacturer}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $equipment->description}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $equipment->status}}</th>
+                         </tr>
+                         </table>
+                         </div>
+
+                
                        <div class="grid grid-cols-3 text-center">
                           <a class="bg-green-200 rounded-bl-lg hover:bg-green-300" href="{{route('show-equipment', $equipment)}}">Ver mais</a>
                           @if($equipment->status == 0)

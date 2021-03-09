@@ -250,14 +250,44 @@
                         $filter3 = $services_closed->sortBy($val);
                     @endphp
                     @foreach($filter as $service)   
-                     <div class="p-3 border">
+                      <div class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
                          @if($service->status_id < 2)
                          <div class="mt-3 px-2 border-b">
-                            <table>Id do chamado -> {{ $service->id}} | Id do Equipamento -> {{ $service->equipment_id}} | Problema -> {{ $service->description}} | Situação -> Em análise</table></div>
+                        <table class="min-w-full">
+                            <tr>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->equipment_id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->description}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">Em análise</th>
                          @elseif($service->status_id > 2)
-                         <div class="mt-3 px-2 border-b">Id do chamado -> {{ $service->id}} | Id do Equipamento -> {{ $service->equipment_id}} | Problema -> {{ $service->description}} | Situação -> Encerrado</div>
+
+
+                         </tr>
+                         </table>
+                         </div>
+
+
+                        <div class="mt-3 px-2 border-b">
+                        <table class="min-w-full">
+                            <tr>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->equipment_id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->description}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">Encerrado</th>
+                        </tr>
+                    </table>
+
+
                          @else
-                         <div class="mt-3 px-2 border-b">Id do chamado -> {{ $service->id}} | Id do Equipamento -> {{ $service->equipment_id}} | Problema -> {{ $service->description}} | Situação -> Aberto</div>
+                         <div class="mt-3 px-2 border-b">
+                        <table class="min-w-full">
+                            <tr>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->equipment_id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->description}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">Aberto</th>
+                        </tr>
+                    </table>
                          @endif
                           <div class="grid grid-cols-3 text-center">
                           <a class="bg-green-200 rounded-bl-lg hover:bg-green-300" href="{{route('show-service', $service)}}">Ver mais</a>
@@ -287,7 +317,16 @@
                 </div>
                      @foreach($filter2 as $service)   
                      <div class="p-3 border">
-                       <div class="mt-3 px-2 border-b">Id do chamado -> {{ $service->id}} | Id do Equipamento -> {{ $service->equipment_id}} | Problema -> {{ $service->description}} | Situação -> Em análise</div>
+                         <div class="mt-3 px-2 border-b">
+                        <table class="min-w-full">
+                            <tr>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->equipment_id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->description}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">Em análise</th>
+                        </tr>
+                         </table>
+                         </div>
                        <div class="grid grid-cols-3 text-center">
                           <a class="bg-green-200 rounded-bl-lg hover:bg-green-300" href="{{route('show-service', $service)}}">Ver mais</a>
                           <a class="bg-yellow-200 hover:bg-yellow-300" href="{{ route('edit-service', $service)}}">Editar</a>
@@ -316,7 +355,16 @@
                 </div>
             @foreach($filter3 as $service)
              <div class="p-3 border">
-                    <div class="mt-3 px-2 border-b">Id do chamado -> {{ $service->id}} | Id do Equipamento -> {{ $service->equipment_id}} | Problema -> {{ $service->description}} | Situação -> Encerrado</div>
+                      <div class="mt-3 px-2 border-b">
+                        <table class="min-w-full">
+                            <tr>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->equipment_id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->description}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">Encerrado</th>
+                        </tr>
+                         </table>
+                         </div>
                     <div class="grid grid-cols-3 text-center">
                     <a class="bg-green-200 rounded-bl-lg hover:bg-green-300" href="{{route('show-service', $service)}}">Ver mais</a>
                     <a class="bg-red-200 rounded-br-lg hover:bg-red-300" onclick="javascript: if (confirm('Você realmente deseja excluir este chamado?'))location.href='{{ route('rm-service', $service)}}'" >Excluir</a>

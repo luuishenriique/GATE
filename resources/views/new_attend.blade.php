@@ -129,7 +129,7 @@
                 <div class="flex items-center justify-between w-full md:w-auto">
                   <a href="#">
                     <span class="sr-only">GATE</span>
-                    <img class="h-8 w-auto sm:h-24 mx-16" src="logo_gate2.png">
+                    <img class="h-8 w-auto sm:h-24 mx-16" src="../../logo_gate2.png">
                 </a>
                 <div class="-mr-2 flex items-center md:hidden">
                     <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" id="main-menu" aria-haspopup="true">
@@ -191,12 +191,25 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="block text-center textx1 pb-3">
                         <h2>Histórico de atendimento</h2>
-                        @foreach($attendances as $attendance)
-                        <br>
-                        Data --> {{$attendance->updated_at}}
-                        <br>
-                        Descrição --> {{$attendance->description}}
-                        <br>
+                           @foreach($attendances as $attendance)
+                        
+
+                    <div class="mt-3 px-2 border-b">
+                        <table class="min-w-full">
+                            <tr>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center leading-4 text-gray-700 tracking-wider">Data</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center leading-4 text-gray-700 tracking-wider">Descrição atual</th>
+                            </tr>
+                        </table>
+
+
+                        <div class="mt-3 px-2 border-b">
+                        <table class="min-w-full">
+                            <tr>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $attendance->updated_at}}</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $attendance->description}}</th>
+                            </tr>
+                        </table>
                         @endforeach
                         {{ $attendances->links('pagination-links') }}
                         <br>

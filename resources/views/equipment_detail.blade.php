@@ -129,7 +129,7 @@
                 <div class="flex items-center justify-between w-full md:w-auto">
                   <a href="#">
                     <span class="sr-only">GATE</span>
-                    <img class="h-8 w-auto sm:h-24 mx-16" src="logo_gate2.png">
+                    <img class="h-8 w-auto sm:h-24 mx-16" src="../../../logo_gate2.png">
                 </a>
                 <div class="-mr-2 flex items-center md:hidden">
                     <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" id="main-menu" aria-haspopup="true">
@@ -189,39 +189,64 @@
                         $services = App\Models\Service::where('equipment_id', $equipment->id)->get();
                         $teste = strlen($services);
                         @endphp
-                        <h1>Colocar botão para atendimento de chamado</h1>
-                        <br>
                         <h2>Detalhes do equipamento</h2>
-                        <br>
-                        <br>
-                        Id do equipamento -> {{$equipment->id}}
-                        <br>
-                        Nome -> 
-                        <br>
-                        Código de Tombamento -> {{$equipment->tomb_id}}
-                        <br>
-                        Modelo -> {{$equipment->model}}
-                        <br>
-                        Fabricante ->
-                        <br>
-                        Data de registro -> {{$equipment->created_at}}
-                        <br>
-                        <br>
+                        
+             <div class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
+                    <table class="min-w-full">
+                        <thead>
+                            <tr>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">ID do Equipamento</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Código de Tombamento</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Modelo</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Data de registro</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+<div class="mt-3 px-2 border-b">
+                        <table class="min-w-full">
+                            <tr>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $equipment->id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $equipment->tomb_id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $equipment->model}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $equipment->created_at}}</th>
+                         </tr>
+                         </table>
+                         </div>
+
                         @if($teste > 2)
+                        <br>
                         <h2>Detalhes do chamado</h2>
                         @endif
                         @foreach($services as $service)
-                        <br>
-                        <br>
-                        Nº do chamado - > {{$service->id}}
-                        <br>
-                        Data de criação -> {{$service->created_at}}
-                        <br>
-                        Id do equipamento -> {{$service->equipment_id}}
-                        <br>
-                        Descrição do problema -> {{$service->description}}
-                        <br>
-                        <br>
+                        
+
+            <div class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
+                    <table class="min-w-full">
+                        <thead>
+                            <tr>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Nº do chamado</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Data de criação</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Id do equipamento</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Descrição do problema</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+            <div class="mt-3 px-2 border-b">
+                        <table class="min-w-full">
+                            <tr>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->created_at}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->equipment_id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->description}}</th>
+                         </tr>
+                         </table>
+                         </div>
                         @endforeach
                     </div>
                 </div>
