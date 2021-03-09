@@ -181,11 +181,11 @@
         
     </x-slot>
 
-    <div class="py-12">
+    <div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <a href="{{ route('services') }}" class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-gradient-to-r from-gray-600 to-gray-900 transform hover:scale-110">Abrir um chamado</a>
+                    <a href="{{ route('services') }}" class="focus:outline-none text-white text-sm py-2.5 mb-96 px-5 rounded-md bg-gradient-to-r from-gray-600 to-gray-900 transform hover:scale-110">Abrir um chamado</a>
                     <br>
                     <br>
                     @php
@@ -197,8 +197,8 @@
                     <br>
                     <form method="GET" action="{{ route('dashboard') }}">
                     @csrf
-                    <div>
-                        <select name="slc-src" id="val" class="full block rounded-mg">
+                    <div class="flex">
+                        <select name="slc-src" id="val" class="full block rounded-mg mr-5">
                             <option disabled selected >Selecione uma opção de pesquisa</option>
                             <option value="id">Id</option>
                             <option value="equipment_id">Equipamento</option>
@@ -207,15 +207,10 @@
                             <option value="created_at">Data de início</option>
                             <option value="updated_at">Última atualização</option>
                         </select>
-                <div class="flex items-center justify-end mt-4">
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900">
-                        {{ __('') }}
-                    </a>
-
                     <x-button class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-gradient-to-r from-gray-600 to-gray-900 transform hover:scale-110">
                         {{ __('Pesquisar') }}
                     </x-button>
-                </div>
+                    </div>
                     </form>
                     <div class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
                     <table class="min-w-full">
@@ -239,10 +234,10 @@
                          <div class="mt-3 px-2 border-b">
                         <table class="min-w-full">
                             <tr>
-                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->id}}</th>
-                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->equipment_id}}</th>
-                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->description}}</th>
-                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">Em análise</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $service->id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $service->equipment_id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $service->description}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">Em análise</th>
                          @elseif($service->status_id > 2)
 
 
@@ -254,10 +249,10 @@
                         <div class="mt-3 px-2 border-b">
                         <table class="min-w-full">
                             <tr>
-                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->id}}</th>
-                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->equipment_id}}</th>
-                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->description}}</th>
-                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">Encerrado</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $service->id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $service->equipment_id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $service->description}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">Encerrado</th>
                         </tr>
                     </table>
 
@@ -266,10 +261,10 @@
                          <div class="mt-3 px-2 border-b">
                         <table class="min-w-full">
                             <tr>
-                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->id}}</th>
-                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->equipment_id}}</th>
-                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->description}}</th>
-                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">Aberto</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $service->id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $service->equipment_id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $service->description}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">Aberto</th>
                         </tr>
                     </table>
                          @endif
