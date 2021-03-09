@@ -129,7 +129,7 @@
                 <div class="flex items-center justify-between w-full md:w-auto">
                   <a href="#">
                     <span class="sr-only">GATE</span>
-                    <img class="h-8 w-auto sm:h-24 mx-16" src="logo_gate2.png">
+                    <img class="h-8 w-auto sm:h-24 mx-16" src="../../logo_gate2.png">
                 </a>
                 <div class="-mr-2 flex items-center md:hidden">
                     <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" id="main-menu" aria-haspopup="true">
@@ -189,26 +189,49 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="block text-center textx1 pb-3">
-                        <h2>Detalhes do chamado</h2>
-                        <br>
-                        <br>
-                        Nº do chamado - > {{$service->id}}
-                        <br>
-                        Data de criação -> {{$service->created_at}}
-                        <br>
-                        Id do equipamento -> {{$service->equipment_id}}
-                        <br>
-                        Descrição do problema -> {{$service->description}}
-                        <br>
-                        <br>
-                        <br>
+                            <h2>Detalhes do chamado</h2>
+                        <div class="mt-3 px-2 border-b">
+                        <table class="min-w-full">
+                            <tr>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center leading-4 text-gray-700 tracking-wider">Nº do Chamado</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center leading-4 text-gray-700 tracking-wider">Data de criação</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center leading-4 text-gray-700 tracking-wider">ID do equipamento</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center leading-4 text-gray-700 tracking-wider">Descrição do problemma</th>
+                            </tr>
+                        </table>
+
+                        
+                    <div class="mt-3 px-2 border-b">
+                        <table class="min-w-full">
+                            <tr>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->id}}</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->created_at}}</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->equipment_id}}</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->description}}</th>
+                            </tr>
+                        </table>
+
+                            <h1> ㅤ</h1>
+
+
                         <h2>Histórico de acompanhamento</h2>
                         @foreach($attendances as $attendance)
-                        <br>
-                        <br>
-                        Data -> {{$attendance->updated_at}}
-                        <br>
-                        Descrição atual -> {{$attendance->description}}
+                        <div class="mt-3 px-2 border-b">
+                        <table class="min-w-full">
+                            <tr>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center leading-4 text-gray-700 tracking-wider">Data</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center leading-4 text-gray-700 tracking-wider">Descrição atual</th>
+                            </tr>
+                        </table>
+
+
+                        <div class="mt-3 px-2 border-b">
+                        <table class="min-w-full">
+                            <tr>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $attendance->updated_at}}</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $attendance->description}}</th>
+                            </tr>
+                        </table>
                         @endforeach
                         <br>
                         <br>
@@ -229,3 +252,5 @@
         </div>
     </div>  
 </x-app-layout>
+
+                

@@ -244,16 +244,35 @@
                             <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->description}}</th>
                             <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">Em análise</th>
                          @elseif($service->status_id > 2)
+
+
                          </tr>
                          </table>
                          </div>
 
 
-                        <div class="mt-3 px-2 border-b">Id do chamado -> {{ $service->id}} | Id do Equipamento -> {{ $service->equipment_id}} | Problema -> {{ $service->description}} | Situação -> Encerrado</div>
+                        <div class="mt-3 px-2 border-b">
+                        <table class="min-w-full">
+                            <tr>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->equipment_id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->description}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">Encerrado</th>
+                        </tr>
+                    </table>
+
+
                          @else
-                         <div class="mt-3 px-2 border-b">Id do chamado -> {{ $service->id}} | Id do Equipamento -> {{ $service->equipment_id}} | Problema -> {{ $service->description}} | Situação -> Aberto</div>
+                         <div class="mt-3 px-2 border-b">
+                        <table class="min-w-full">
+                            <tr>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->equipment_id}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">{{ $service->description}}</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider">Aberto</th>
+                        </tr>
+                    </table>
                          @endif
-                          
 
                           <div class="grid grid-cols-3 text-center">
                           <a class="bg-green-200 rounded-bl-lg hover:bg-green-300" href="{{route('show-user', $service)}}">Ver mais</a>

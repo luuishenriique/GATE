@@ -121,7 +121,7 @@
     <body>
         <header>
             <div class="container">
-                <a href=""><img src="logo_gate.jpeg" alt="logo" class="logo"></a>
+                <a href=""><img src="../../logo_gate2.png" alt="logo" class="logo"></a>
                 <h3>ABRIR CHAMADO</h3>
                 <nav>
                     <ul>

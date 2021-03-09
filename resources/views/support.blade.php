@@ -129,7 +129,7 @@
                 <div class="flex items-center justify-between w-full md:w-auto">
                   <a href="#">
                     <span class="sr-only">GATE</span>
-                    <img class="h-8 w-auto sm:h-24 mx-16" src="../logo_gate2.png">
+                    <img class="h-8 w-auto sm:h-24 mx-16" src="../../logo_gate2.png">
                 </a>
                 <div class="-mr-2 flex items-center md:hidden">
                     <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" id="main-menu" aria-haspopup="true">
@@ -184,8 +184,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <a href="{{ route('equipments') }}" class="button1">Adicionar equipamento</a>
-                    <a href="{{ route('equipments_list') }}" class="button1">Ver equipamentos</a>
+                    <a href="{{ route('equipments') }}" class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-gradient-to-r from-gray-600 to-gray-900 transform hover:scale-110">Adicionar equipamento</a>
+                    <a href="{{ route('equipments_list') }}" class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-gradient-to-r from-gray-600 to-gray-900 transform hover:scale-110">Ver equipamentos</a>
                     <br>
                     <br>
                     <!-- Colocar para avisar quando não tiver chamados em aberto -->
@@ -207,7 +207,7 @@
                         {{ __('') }}
                     </a>
 
-                    <x-button class="ml-4">
+                    <x-button class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-gradient-to-r from-gray-600 to-gray-900 transform hover:scale-110">
                         {{ __('Pesquisar') }}
                     </x-button>
                 </div>
@@ -216,25 +216,26 @@
                     <br>
                     <form method="GET" action="{{ route('support') }}">
                     @csrf
-                <!-- Texto a ser procurado -->
-                <div>
-                    <x-label for="value" :value="__('Pesquisa por texto')" />
-
-                    <x-input id="input" inputclass="block mt-1 w-full" placeholder="Digite aqui o que procura" type="text" name="input" :value="old('input')" required autofocus/>
-                </div>
-                <div class="flex items-center justify-end mt-4">
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900">
-                        {{ __('') }}
-                    </a>
-
-                    <x-button class="ml-4">
-                        {{ __('Pesquisar') }}
-                    </x-button>
-                </div>
                     </form>
+
                     <div class="block text-center textx1 pb-3">
                         <h2>Chamados em atendimento</h2>
                     </div>
+                    
+                <div class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
+                    <table class="min-w-full">
+                        <thead>
+                            <tr>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center leading-4 text-gray-700 tracking-wider">ID</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">ID do Equipamento</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Problema</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Situação</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
                     <br>
                     <br>
                     <!-- Gerando lista de chamados de usuário -->
@@ -251,7 +252,8 @@
                     @foreach($filter as $service)   
                      <div class="p-3 border">
                          @if($service->status_id < 2)
-                         <div class="mt-3 px-2 border-b">Id do chamado -> {{ $service->id}} | Id do Equipamento -> {{ $service->equipment_id}} | Problema -> {{ $service->description}} | Situação -> Em análise</div>
+                         <div class="mt-3 px-2 border-b">
+                            <table>Id do chamado -> {{ $service->id}} | Id do Equipamento -> {{ $service->equipment_id}} | Problema -> {{ $service->description}} | Situação -> Em análise</table></div>
                          @elseif($service->status_id > 2)
                          <div class="mt-3 px-2 border-b">Id do chamado -> {{ $service->id}} | Id do Equipamento -> {{ $service->equipment_id}} | Problema -> {{ $service->description}} | Situação -> Encerrado</div>
                          @else
@@ -270,6 +272,19 @@
                      <div>
                          <h2>Chamados em análise para atendimento</h2>
                      </div>
+                      <div class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
+                    <table class="min-w-full">
+                        <thead>
+                            <tr>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center leading-4 text-gray-700 tracking-wider">ID</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">ID do Equipamento</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Problema</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Situação</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
                      @foreach($filter2 as $service)   
                      <div class="p-3 border">
                        <div class="mt-3 px-2 border-b">Id do chamado -> {{ $service->id}} | Id do Equipamento -> {{ $service->equipment_id}} | Problema -> {{ $service->description}} | Situação -> Em análise</div>
@@ -286,6 +301,19 @@
             <div>
                 <h2>Chamados encerrados</h2>
             </div>
+             <div class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
+                    <table class="min-w-full">
+                        <thead>
+                            <tr>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center leading-4 text-gray-700 tracking-wider">ID</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">ID do Equipamento</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Problema</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Situação</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
             @foreach($filter3 as $service)
              <div class="p-3 border">
                     <div class="mt-3 px-2 border-b">Id do chamado -> {{ $service->id}} | Id do Equipamento -> {{ $service->equipment_id}} | Problema -> {{ $service->description}} | Situação -> Encerrado</div>
