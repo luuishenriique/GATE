@@ -221,9 +221,14 @@
                      @foreach($equipments as $equipment)
                      @php
                      $chamados = App\Models\Service::where('equipment_id', $equipment->id)->get();
+                     $teste = strlen($chamados);
                      @endphp 
                      <div class="p-3 border">
-                        {{$chamados}}
+                        @if($teste > 2)
+                        <div class="text-center text-yellow-500">
+                            <b>Há um chamado aberto para este equipamento!</b>
+                        </div>
+                        @endif
                        <div class="mt-3 px-2 border-b">Cód. do Equipamento -> {{ $equipment->id }} | Nome do Equipamento -> {{ $equipment->name }} | Cód. Tombamento -> {{ $equipment->tomb_id }} | Modelo -> {{ $equipment->model }} | Fabricante -> {{ $equipment->manufacturer }} | Descrição -> {{ $equipment->description }} | Status -> {{ $equipment->status }}</div>
                        <div class="grid grid-cols-3 text-center">
                           <a class="bg-green-200 rounded-bl-lg hover:bg-green-300" href="{{route('show-equipment', $equipment)}}">Ver mais</a>

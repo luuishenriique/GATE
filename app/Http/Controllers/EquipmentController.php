@@ -70,7 +70,7 @@ class EquipmentController extends Controller
     public function show(Equipment $equipment)
     {
         //
-        return view('equipment_detail');
+        return view('equipment_detail', ['equipment'=>$equipment]);
     }
 
     /**

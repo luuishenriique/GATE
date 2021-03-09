@@ -176,42 +176,43 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="block text-center textx1 pb-3">
                         @php
+                        $services = App\Models\Service::where('equipment_id', $equipment->id)->get();
+                        $teste = strlen($services);
                         @endphp
+                        <h1>Colocar botão para atendimento de chamado</h1>
+                        <br>
                         <h2>Detalhes do equipamento</h2>
                         <br>
                         <br>
-                        Id do equipamento -> 
+                        Id do equipamento -> {{$equipment->id}}
                         <br>
                         Nome -> 
                         <br>
-                        Código de Tombamento ->
+                        Código de Tombamento -> {{$equipment->tomb_id}}
                         <br>
-                        Modelo ->
+                        Modelo -> {{$equipment->model}}
                         <br>
                         Fabricante ->
                         <br>
-                        Data de registro ->
+                        Data de registro -> {{$equipment->created_at}}
                         <br>
                         <br>
+                        @if($teste > 2)
                         <h2>Detalhes do chamado</h2>
+                        @endif
+                        @foreach($services as $service)
                         <br>
                         <br>
-                        Nº do chamado - >
+                        Nº do chamado - > {{$service->id}}
                         <br>
-                        Data de criação -> 
+                        Data de criação -> {{$service->created_at}}
                         <br>
-                        Id do equipamento ->
+                        Id do equipamento -> {{$service->equipment_id}}
                         <br>
-                        Descrição do problema ->
-                        <br>
-                        <br>
-                        <br>
-                        <h2>Histórico de acompanhamento</h2>
+                        Descrição do problema -> {{$service->description}}
                         <br>
                         <br>
-                        Última atualização ->
-                        <br>
-                        Descrição -> 
+                        @endforeach
                     </div>
                 </div>
             </div>
