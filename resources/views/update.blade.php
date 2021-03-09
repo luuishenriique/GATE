@@ -144,23 +144,23 @@
                 <div>
                     <x-label for="equipment_id" :value="__('Código')" />
 
-                    <x-input id="equipment_id" class="block mt-1 w-full" placeholder="Valor atual -> {{$service->equipment_id}}" type="text" name="equipment_id" :value="old('equipment_id')" required autofocus />
+                    <x-input id="equipment_id" class="transition duration-300 border border-gray-400 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-300 block mt-1 w-full" placeholder="Valor atual -> {{$service->equipment_id}}" type="text" name="equipment_id" :value="old('equipment_id')" required autofocus />
                 </div>
             <!-- Descrição -->
                 <div>
                     <x-label for="description" :value="__('Descrição')" />
 
-                    <x-input id="description" class="block mt-1 w-full" placeholder="Valor atual -> {{$service->description}}" type="text" name="description" :value="old('description')" required autofocus />
+                    <x-input id="description" class="transition duration-300 border border-gray-400 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-300 block mt-1 w-full" placeholder="Valor atual -> {{$service->description}}" type="text" name="description" :value="old('description')" required autofocus />
                 </div>
                 <!-- Botão de modificar -->
                 <div class="flex items-center justify-end mt-4">
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                        {{ __('') }}
+                    <a class="block mt-2 w-1/6" href="/dashboard/support">
+                        {{ __('Voltar') }}
                     </a>
 
-                    <x-button class="ml-4">
+                    <button class="px-4 py-2 text-lg font-semibold text-white transition-colors duration-300 bg-gray-600 rounded-md shadow hover:bg-gray-700 focus:outline-none focus:ring-gray-300 focus:ring-4">
                         {{ __('Modificar') }}
-                    </x-button>
+                    </button>
                 </div>
             </form>
     </x-auth-card>

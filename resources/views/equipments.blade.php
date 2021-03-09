@@ -142,41 +142,41 @@
                 <div>
                     <x-label for="name" :value="__('Nome')" />
 
-                    <x-input id="name" class="block mt-1 w-full" placeholder="Nome" type="text" name="name" :value="old('name')" required autofocus/>
+                    <x-input id="name" class="transition duration-300 border border-gray-400 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-300 block mt-1 w-full" placeholder="Nome" type="text" name="name" :value="old('name')" required autofocus/>
                 </div>
                 <!-- Código de Tombamento -->
                 <div>
                     <x-label for="tomb_id" :value="__('Código de tombamento')" />
 
-                    <x-input id="tomb_id" class="block mt-1 w-full" placeholder="Código de tombamento" type="text" name="tomb_id" :value="old('tomb_id')" required autofocus />
+                    <x-input id="tomb_id" class="transition duration-300 border border-gray-400 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-300 block mt-1 w-full" placeholder="Código de tombamento" type="text" name="tomb_id" :value="old('tomb_id')" required autofocus />
                 </div>
                 <!-- Modelo -->
                 <div>
                     <x-label for="model" :value="__('Modelo')" />
 
-                    <x-input id="model" class="block mt-1 w-full" placeholder="Modelo" type="text" name="model" :value="old('model')" required autofocus />
+                    <x-input id="model" class="transition duration-300 border border-gray-400 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-300 block mt-1 w-full" placeholder="Modelo" type="text" name="model" :value="old('model')" required autofocus />
                 </div>
                 <!-- Fabricante -->
                 <div>
                     <x-label for="manufacturer" :value="__('Fabricante')" />
 
-                    <x-input id="manufacturer" class="block mt-1 w-full" placeholder="Fabricante" type="text" name="manufacturer" :value="old('manufacturer')" required autofocus />
+                    <x-input id="manufacturer" class="transition duration-300 border border-gray-400 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-300 block mt-1 w-full" placeholder="Fabricante" type="text" name="manufacturer" :value="old('manufacturer')" required autofocus />
                 </div>
                       <!-- Descrição -->
                 <div>
                     <x-label for="description" :value="__('Descrição')" />
 
-                    <x-input id="description" class="block mt-1 w-full" placeholder="Descrição" type="text" name="description" :value="old('description')" required autofocus />
+                    <x-input id="description" class="transition duration-300 border border-gray-400 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-300 block mt-1 w-full" placeholder="Descrição" type="text" name="description" :value="old('description')" required autofocus />
                 </div>
                 <!-- Botão de cadastro -->
                 <div class="flex items-center justify-end mt-4">
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                        {{ __('') }}
+                    <a class="block mt-2 w-1/6" href="/dashboard/support">
+                        {{ __('Voltar') }}
                     </a>
 
-                    <x-button class="ml-4">
+                    <button class="px-4 py-2 text-lg font-semibold text-white transition-colors duration-300 bg-gray-600 rounded-md shadow hover:bg-gray-700 focus:outline-none focus:ring-gray-300 focus:ring-4">
                         {{ __('Cadastrar') }}
-                    </x-button>
+                    </button>
                 </div>
             </form>
     </x-auth-card>

@@ -79,38 +79,6 @@
             text-align: center;
             margin-top: 50px;
         }
-        .button1{
-            line-height: 24px;
-            cursor: pointer;
-            font-weight: 500;
-            display: inline-flex;
-            background-color: black;
-            color: white;
-            border-radius: 28px;
-            font-size: 20px;
-            margin-right: 10px;
-            padding: 16px 32px;
-        }
-        .button1:hover{
-            background-color: #131313;
-            box-shadow: 2px 2px 4px #888888;
-        }
-        .button2{
-            line-height: 24px;
-            cursor: pointer;
-            font-weight: 500;
-            display: inline-flex;
-            background-color: black;
-            color: white;
-            border-radius: 28px;
-            font-size: 20px;
-            margin-left: 10px;
-            padding: 16px 32px;
-        }
-        .button2:hover{
-            background-color: #131313;
-            box-shadow: 2px 2px 4px #888888;
-        }
     </style>
 </head>
 <body>
@@ -144,41 +112,41 @@
                 <div>
                     <x-label for="name" :value="__('Nome')" />
 
-                    <x-input id="name" class="block mt-1 w-full" placeholder="Nome atual -> {{$equipment->name}}" type="text" name="name" :value="old('name')" required autofocus />
+                    <x-input id="name" class="transition duration-300 border border-gray-400 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-300 block mt-1 w-full" placeholder="Nome atual -> {{$equipment->name}}" type="text" name="name" :value="old('name')" required autofocus />
                 </div>
             <!-- Código de Tombamento -->
                 <div>
                     <x-label for="tomb_id" :value="__('Código de Tombamento')" />
 
-                    <x-input id="tomb_id" class="block mt-1 w-full" placeholder="Código atual -> {{$equipment->tomb_id}}" type="text" name="tomb_id" :value="old('tomb_id')" maxlength="7" minlength="7" required autofocus />
+                    <x-input id="tomb_id" class="transition duration-300 border border-gray-400 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-300 block mt-1 w-full" placeholder="Código atual -> {{$equipment->tomb_id}}" type="text" name="tomb_id" :value="old('tomb_id')" maxlength="7" minlength="7" required autofocus />
                 </div>
             <!-- Modelo -->
                 <div>
                     <x-label for="model" :value="__('Modelo')" />
 
-                    <x-input id="model" class="block mt-1 w-full" placeholder="Modelo atual -> {{$equipment->model}}" type="text" name="model" :value="old('model')" required autofocus />
+                    <x-input id="model" class="transition duration-300 border border-gray-400 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-300 block mt-1 w-full" placeholder="Modelo atual -> {{$equipment->model}}" type="text" name="model" :value="old('model')" required autofocus />
                 </div>
             <!-- Fabricante -->
                 <div>
                     <x-label for="manufacturer" :value="__('Fabricante')" />
 
-                    <x-input id="manufacturer" class="block mt-1 w-full" placeholder="Fabricante atual -> {{$equipment->manufacturer}}" type="text" name="manufacturer" :value="old('manufacturer')" required autofocus />
+                    <x-input id="manufacturer" class="transition duration-300 border border-gray-400 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-300 block mt-1 w-full" placeholder="Fabricante atual -> {{$equipment->manufacturer}}" type="text" name="manufacturer" :value="old('manufacturer')" required autofocus />
                 </div>
             <!-- Descrição -->
                 <div>
                     <x-label for="description" :value="__('Descrição')" />
 
-                    <x-input id="description" class="block mt-1 w-full" placeholder="Descrição atual -> {{$equipment->description}}" type="text" name="description" :value="old('description')" required autofocus />
+                    <x-input id="description" class="transition duration-300 border border-gray-400 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-300 block mt-1 w-full" placeholder="Descrição atual -> {{$equipment->description}}" type="text" name="description" :value="old('description')" required autofocus />
                 </div>
             <!-- Botão de modificar -->
                 <div class="flex items-center justify-end mt-4">
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                        {{ __('') }}
+                    <a class="block mt-2 w-1/6" href="/dashboard/support">
+                        {{ __('Voltar') }}
                     </a>
 
-                    <x-button class="ml-4">
+                    <button class="px-4 py-2 text-lg font-semibold text-white transition-colors duration-300 bg-gray-600 rounded-md shadow hover:bg-gray-700 focus:outline-none focus:ring-gray-300 focus:ring-4">
                         {{ __('Modificar') }}
-                    </x-button>
+                    </button>
                 </div>
             </form>
     </x-auth-card>
