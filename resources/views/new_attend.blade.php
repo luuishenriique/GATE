@@ -182,7 +182,7 @@
     </x-slot>
 
     @php
-    $attendances = App\Models\Attendance::where('service_id', $service->id)->get();
+    $attendances = App\Models\Attendance::where('service_id', $service->id)->paginate(3);
     @endphp
 
     <div class="py-12">
@@ -198,6 +198,7 @@
                         Descrição --> {{$attendance->description}}
                         <br>
                         @endforeach
+                        {{ $attendances->links('pagination-links') }}
                         <br>
                         <br>
                         <form method="POST" action="{{route('add-attend', $service)}}">
