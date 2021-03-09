@@ -200,19 +200,6 @@
                         <br>
                         Descrição atual -> {{$attendance->description}}
                         @endforeach
-                        <br>
-                        <br>
-                        <div class="grid grid-cols-3 text-center">
-                            @if($service->status_id < 2)
-                          <a class="bg-yellow-200 rounded-bl-lg hover:bg-yellow-300" href="{{ route('edit-service', $service )}}">Editar</a>
-                          <a class="bg-blue-200 rounded-br-lg hover:bg-blue-300" href="{{ route('show-attend', $service)}}'" >Atender</a>
-                          <a class="bg-red-200 rounded-br-lg hover:bg-red-300" onclick="javascript: if (confirm('Você realmente deseja excluir este chamado?'))location.href='{{ route('rm-service', $service)}}'" >Excluir</a>
-                          @endif
-                          @if($service->status_id == 2)
-                          <a class="bg-red-200 rounded hover:bg-red-300" onclick="javascript: if (confirm('Você realmente deseja encerrar este chamado?'))location.href='{{ route('close-service', $service)}}'" >Encerrar</a>
-                          @endif
-
-                </div>
                     </div>
                 </div>
             </div>

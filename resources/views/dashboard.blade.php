@@ -178,12 +178,9 @@
                     <br>
                     <br>
                     @php
-                    $val = $_GET['slc-src'] ?? '';
+                    $val = $_GET['slc-src'] ?? 'status_id';
                     $services = Auth::user()->services->sortBy($val);
                     @endphp
-                    <div class="block text-center textx1 pb-3">
-                        <h2> Histórico de Chamados {{$val}}</h2>
-                    </div>
                     <!-- Colocar para avisar quando não tiver chamados em aberto -->
                     <br>
                     <br>
@@ -209,9 +206,11 @@
                     </x-button>
                 </div>
                     </form>
+                    <div class="block text-center textx1 pb-3">
+                        <h2> Histórico de Chamados</h2>
+                    </div>
                     <!-- Gerando lista de chamados de usuário -->
-                    @foreach($services as $service)
-                    {{$val}}   
+                    @foreach($services as $service) 
                      <div class="p-3 border">
                          @if($service->status_id < 2)
                          <div class="mt-3 px-2 border-b">Id do chamado -> {{ $service->id}} | Id do Equipamento -> {{ $service->equipment_id}} | Problema -> {{ $service->description}} | Situação -> Em análise</div>
@@ -221,8 +220,12 @@
                          <div class="mt-3 px-2 border-b">Id do chamado -> {{ $service->id}} | Id do Equipamento -> {{ $service->equipment_id}} | Problema -> {{ $service->description}} | Situação -> Aberto</div>
                          @endif
                           <div class="grid grid-cols-3 text-center">
-                          <a class="bg-green-200 rounded-bl-lg hover:bg-green-300" href="{{route('show-service', $service)}}">Ver mais</a>
-                          <a class="bg-yellow-200 hover:bg-yellow-300" href="">Editar</a>
+                          <a class="bg-green-200 rounded-bl-lg hover:bg-green-300" href="{{route('show-user', $service)}}">Ver mais</a>
+                          @if($service->status_id == 1)
+                          <a class="bg-yellow-200 hover:bg-yellow-300" href="{{route('edit-service', $service)}}">Editar</a>
+                          @else
+                          <a class="bg-yellow-200 hover:bg-yellow-300" onclick="javascript: if (alert('Você não pode editar este chamado!'))location.href=''" >Editar</a>
+                          @endif
                           @if($service->status_id == 1)
                           <a class="bg-red-200 rounded-br-lg hover:bg-red-300" onclick="javascript: if (confirm('Você realmente deseja excluir este chamado?'))location.href='{{ route('rm-service', $service)}}'" >Excluir</a>
                           @else
