@@ -8,11 +8,6 @@
         <title>GATE</title>
 
         <style>
-            body{
-                margin: 0;
-                font-family: 'Work Sans', sans-serif;
-                font-weight: 300;
-            }
             .container{
                 width: 80%;
                 margin: 0 auto;
@@ -31,7 +26,8 @@
                 height: 70px;
             }
             nav{
-                float: right;
+                float: left;
+                align-items: flex-start
             }
             nav ul{
                 margin: 0;
@@ -120,48 +116,62 @@
     </head>
     <body>
         <header>
-            <div class="container">
-                <a href=""><img src="logo_gate.jpeg" alt="logo" class="logo"></a>
-                <h3>ABRIR CHAMADO</h3>
-                <nav>
-                    <ul>
-                        <li><a href="{{route('support')}}">Voltar</a></li>
-                    </ul>
-                </nav>
+   <div class="relative bg-white overflow-hidden">
+      <div class="max-w-7xl mx-auto">
+        <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-10">
+          <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <polygon points="50,0 100,0 50,100 0,100" />
+        </svg>
+
+        <div class="relative pt-6 px-1 sm:px-6 lg:px-96">
+            <nav class="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
+              <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
+                <div class="flex items-center justify-between w-full md:w-auto">
+                  <a href="#">
+                    <span class="sr-only">GATE</span>
+                    <img class="h-8 w-auto sm:h-24 mx-16" src="logo_gate2.png">
+                </a>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" id="main-menu" aria-haspopup="true">
+
+                    </button>
+                </div>
             </div>
-        
-            <div class="flex-shrink-0 flex items-center">                
-            <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
-                <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                  
-                <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-white-700 focus:border-white-300 transition duration-150 ease-in-out">
-                            <div>{{ Auth::user()->name }}</div>
-
-                            <div class="ml-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                        </button>
-                    </x-slot>
-
-                    <x-slot name="content">
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Logout') }}
-                            </x-dropdown-link>
-              
-                        </form>
-                    </x-slot>
-                </x-dropdown>
+        </div>
+        <div class="-ml-2">
+                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
+                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                </div>
             </div>
+
+            <div class="ml-96 ">
+                <!-- Authentication -->
+                <form  class="mx-96" method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <x-responsive-nav-link :href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Logout') }}
+                    </x-responsive-nav-link>
+                </form>
+        </div>
+    </nav>
+</div>
+
+<div class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+    <div class="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
+      <div class="px-5 pt-4 flex items-center justify-between">
+        <div>
+          <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="">
+      </div>
+      <div class="-mr-2">
+          <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+      </button>
+  </div>
+</div>
 
         </header>
 
