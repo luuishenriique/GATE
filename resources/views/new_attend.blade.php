@@ -170,21 +170,23 @@
         
     </x-slot>
 
+    @php
+    $attendances = App\Models\Attendance::where('service_id', $service->id)->get();
+    @endphp
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="block text-center textx1 pb-3">
-                        <h2>Detalhes do chamado</h2>
+                        <h2>Histórico de atendimento</h2>
+                        @foreach($attendances as $attendance)
                         <br>
+                        Data --> {{$attendance->updated_at}}
                         <br>
-                        Nº do chamado - > {{$service->id}}
+                        Descrição --> {{$attendance->description}}
                         <br>
-                        Data de criação -> {{$service->created_at}}
-                        <br>
-                        Id do equipamento -> {{$service->equipment_id}}
-                        <br>
-                        Descrição do problema -> {{$service->description}}
+                        @endforeach
                         <br>
                         <br>
                         <form method="POST" action="{{route('add-attend', $service)}}">
@@ -193,7 +195,7 @@
                             <div>
                                 <x-label for="description" :value="__('Descrição de atualização')" />
 
-                                <x-input id="description" class="block mt-1 w-full" type="textarea" name="description" placeholder="Digite aqui" :value="old('description')" required autofocus />
+                                <x-input id="description" class="block mt-1 w-full" type="textarea" name="description" placeholder="Digite aqui o que foi feito" :value="old('description')" required autofocus />
                             </div>
                             <!-- Chamado Id -->
                             <div>
