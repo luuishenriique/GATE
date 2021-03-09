@@ -39,6 +39,10 @@ Route::get('/services', function () {
     return view('services');
 })->middleware(['auth'])->name('services');
 
+Route::get('/close-service', function () {
+    return view('close_service');
+})->middleware(['auth'])->name('close_service');
+
 Route::get('/equipments', function () {
     return view('equipments');
 })->middleware(['auth'])->name('equipments');
@@ -61,10 +65,10 @@ Route::get('/dashboard/edit-equipment/{equipment}',[EquipmentController::class, 
 Route::model('service', Service::class);
 Route::get('/dashboard/edit/{service}',[ServiceController::class, 'edit'])->name('edit-service');
 
-Route::put('/dashboard/update/{equipment}', [EquipmentController::class, 'update'])->name('update-equipment')->middleware(['auth']);
+Route::put('/dashboard/update-equipment/{equipment}', [EquipmentController::class, 'update'])->name('update-equipment')->middleware(['auth']);
 
 // Route::model('service', Service::class);
-Route::put('/dashboard/update/{service}', [ServiceController::class, 'update'])->name('update-service')->middleware(['auth']);
+Route::put('/dashboard/update-service/{service}', [ServiceController::class, 'update'])->name('update-service')->middleware(['auth']);
 
 Route::put('/dashboard/update-attend/{service}', [ServiceController::class, 'attend'])->name('attend-service')->middleware(['auth']);
 
@@ -85,6 +89,10 @@ Route::get('/show-service', function () {
     return view('service_detail');
 })->middleware(['auth'])->name('service_detail');
 
+Route::get('/show-service-user', function () {
+    return view('service_detail_user');
+})->middleware(['auth'])->name('service_detail_user');
+
 Route::get('/service-attend', function () {
     return view('attend_service');
 })->middleware(['auth'])->name('attend_service');
@@ -100,7 +108,13 @@ Route::model('service', Service::class);
 Route::get('/dashboard/attend-show/{service}',[ServiceController::class, 'showAttend'])->name('show-attend');
 
 Route::model('service', Service::class);
-Route::get('/dashboard/show/{service}',[ServiceController::class, 'show'])->name('show-service');
+Route::get('/dashboard/show-service/{service}',[ServiceController::class, 'show'])->name('show-service');
+
+Route::model('service', Service::class);
+Route::get('/dashboard/show-service-user/{service}',[ServiceController::class, 'showUser'])->name('show-user');
+
+Route::model('service', Service::class);
+Route::get('/dashboard/close-service/{service}',[ServiceController::class, 'close'])->name('close-service');
 
 // Route::model('equipment', Equipment::class);
 Route::get('/dashboard/{equipment}',[EquipmentController::class, 'destroy'])->name('rm-equipment');

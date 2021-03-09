@@ -231,10 +231,12 @@
                     @php
                         $val = $_GET['slc-src'] ?? '';
                         $val2 = $_GET['input'] ?? '';
-                        $services = App\Models\Service::where('support_id', Auth::user()->id)->get();
+                        $services = App\Models\Service::where('support_id', Auth::user()->id)->where('status_id', 2)->get();
                         $filter = $services->sortBy($val);
                         $services_not_open = App\Models\Service::where('status_id', 1)->get();
                         $filter2 = $services_not_open->sortBy($val);
+                        $services_closed = App\Models\Service::where('status_id', 3)->where('support_id', Auth::user()->id)->get();
+                        $filter3 = $services_closed->sortBy($val);
                     @endphp
                     @foreach($filter as $service)   
                      <div class="p-3 border">
@@ -248,7 +250,7 @@
                           <div class="grid grid-cols-3 text-center">
                           <a class="bg-green-200 rounded-bl-lg hover:bg-green-300" href="{{route('show-service', $service)}}">Ver mais</a>
                           <a class="bg-blue-200 hover:bg-blue-300" href="{{route('new-attend', $service)}}">Atualizar Atendimento</a>
-                          <a class="bg-red-200 rounded-br-lg hover:bg-red-300" onclick="javascript: if (alert('Você não pode excluir um chamado em atendimento!'))location.href=''" >Excluir</a>
+                          <a class="bg-red-200 rounded-br-lg hover:bg-red-300" onclick="javascript: if (confirm('Você deseja encerrar este chamado?'))location.href='{{route('close-service', $service)}}'" >Encerrar</a>
                           <!-- Lembrar de colocar confirmação de exclusão e testar se não está aberto o chamado -->
                         </div>
                      </div>
@@ -267,7 +269,21 @@
                           <a class="bg-blue-200 rounded-br-lg hover:bg-blue-300" href="{{ route('show-attend', $service)}}'" >Atender</a>
                           <a class="bg-red-200 rounded-br-lg hover:bg-red-300" onclick="javascript: if (confirm('Você realmente deseja excluir este chamado?'))location.href='{{ route('rm-service', $service)}}'" >Excluir</a>
                 </div>
+            </div>            
+        @endforeach
+            <br>
+            <br>
+            <div>
+                <h2>Chamados encerrados</h2>
             </div>
+            @foreach($filter3 as $service)
+             <div class="p-3 border">
+                    <div class="mt-3 px-2 border-b">Id do chamado -> {{ $service->id}} | Id do Equipamento -> {{ $service->equipment_id}} | Problema -> {{ $service->description}} | Situação -> Encerrado</div>
+                    <div class="grid grid-cols-3 text-center">
+                    <a class="bg-green-200 rounded-bl-lg hover:bg-green-300" href="{{route('show-service', $service)}}">Ver mais</a>
+                    <a class="bg-red-200 rounded-br-lg hover:bg-red-300" onclick="javascript: if (confirm('Você realmente deseja excluir este chamado?'))location.href='{{ route('rm-service', $service)}}'" >Excluir</a>
+                </div>
+            </div>            
         @endforeach
         </div>
     </div>  

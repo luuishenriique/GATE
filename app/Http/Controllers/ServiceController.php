@@ -76,6 +76,23 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
+    public function close(Service $service)
+    {
+        //
+        // return view('close_service',['service'=>$service]);
+        $service->update([
+            'status_id' => 3,
+        ]);
+
+        return view('support');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Service  $service
+     * @return \Illuminate\Http\Response
+     */
     public function showAttend(Service $service)
     {
         //
@@ -120,7 +137,11 @@ class ServiceController extends Controller
             'description' => $request->description,
         ]);
 
-        return view('support');
+        if (Auth::user()->is_support == 0) {
+            return view('dashboard');
+        } else {
+            return view('support');
+        }
     }
 
     /**
