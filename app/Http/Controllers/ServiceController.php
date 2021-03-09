@@ -76,6 +76,18 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
+    public function showUser(Service $service)
+    {
+        //
+        return view('service_detail_user',['service'=>$service]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Service  $service
+     * @return \Illuminate\Http\Response
+     */
     public function close(Service $service)
     {
         //
