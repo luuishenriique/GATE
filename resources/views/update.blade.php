@@ -158,13 +158,13 @@
                 <div>
                     <x-label for="equipment_id" :value="__('Código')" />
 
-                    <x-input id="equipment_id" class="transition duration-300 border border-gray-400 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-300 block mt-1 w-full" placeholder="Valor atual -> {{$service->equipment_id}}" type="text" name="equipment_id" :value="old('equipment_id')" required autofocus />
+                    <x-input id="equipment_id" class="transition duration-300 border border-gray-400 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-300 block mt-1 w-full" placeholder="Valor atual -> {{$service->equipment_id}}" type="text" name="equipment_id" value="{{$service->equipment_id}}" required autofocus />
                 </div>
             <!-- Descrição -->
                 <div>
                     <x-label for="description" :value="__('Descrição')" />
 
-                    <x-input id="description" class="transition duration-300 border border-gray-400 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-300 block mt-1 w-full" placeholder="Valor atual -> {{$service->description}}" type="text" name="description" :value="old('description')" required autofocus />
+                    <x-input id="description" class="transition duration-300 border border-gray-400 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-300 block mt-1 w-full" placeholder="Valor atual -> {{$service->description}}" type="text" name="description" value="{{$service->description}}" required autofocus />
                 </div>
                 <!-- Botão de modificar -->
                 <div class="flex items-center justify-end mt-4">

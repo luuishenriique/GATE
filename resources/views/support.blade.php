@@ -275,7 +275,7 @@
                        <div class="mt-3 px-2 border-b">Id do chamado -> {{ $service->id}} | Id do Equipamento -> {{ $service->equipment_id}} | Problema -> {{ $service->description}} | Situação -> Em análise</div>
                        <div class="grid grid-cols-3 text-center">
                           <a class="bg-green-200 rounded-bl-lg hover:bg-green-300" href="{{route('show-service', $service)}}">Ver mais</a>
-                          <a class="bg-yellow-200 hover:bg-yellow-300" href="{{ route('edit-service', $service )}}">Editar</a>
+                          <a class="bg-yellow-200 hover:bg-yellow-300" href="{{ route('edit-service', $service)}}">Editar</a>
                           <a class="bg-blue-200 rounded-br-lg hover:bg-blue-300" href="{{ route('show-attend', $service)}}'" >Atender</a>
                           <a class="bg-red-200 rounded-br-lg hover:bg-red-300" onclick="javascript: if (confirm('Você realmente deseja excluir este chamado?'))location.href='{{ route('rm-service', $service)}}'" >Excluir</a>
                 </div>

@@ -256,8 +256,8 @@
                           
 
                           <div class="grid grid-cols-3 text-center">
-                          <a class="bg-green-200 rounded-bl-lg hover:bg-green-300" href="">Ver mais</a>
-                          <a class="bg-yellow-200 hover:bg-yellow-300" href="">Editar</a>
+                          <a class="bg-green-200 rounded-bl-lg hover:bg-green-300" href="{{route('show-user', $service)}}">Ver mais</a>
+                          <a class="bg-yellow-200 hover:bg-yellow-300" href="{{route('edit-service', $service)}}">Editar</a>
                           @if($service->status_id == 1)
                           <a class="bg-red-200 rounded-br-lg hover:bg-red-300" onclick="javascript: if (confirm('Você realmente deseja excluir este chamado?'))location.href='{{ route('rm-service', $service)}}'" >Excluir</a>
                           @else
