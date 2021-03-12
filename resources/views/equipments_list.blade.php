@@ -1,5 +1,4 @@
 <x-app-layout>
-    
 
     <html lang="pt-br">
     <head>
@@ -12,104 +11,8 @@
                 width: 80%;
                 margin: 0 auto;
             }
-            header{
-                background: #1f1f1f;
-            }
-            header::after{
-                content: '';
-                display: table;
-                clear: both;
-            }
-            .logo{
-                float: left;
-                width: 130px;
-                height: 70px;
-            }
-            nav{
-                float: left;
-                align-items: flex-start
-            }
-            nav ul{
-                margin: 0;
-                padding: 0;
-                list-style: none;
-            }
-            nav li{
-                display: inline-block;
-                margin-left: 70px;
-                padding-top: 25px;
-                position: relative;
-            }
-            nav a{
-                color: white;
-                text-decoration: none;
-                font-size: 20px;
-            }
-            nav a:hover{
-                text-shadow: 2px 2px 3px #000000;
-            }
-            .logo2{
-                padding-top: 50px;
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-                width: 400px;
-                height: 200px;
-            }
-            h1{
-                text-align: center;
-                font-weight: 700;
-                line-height: 120%;
-                font-size: 45px;
-            }
-            h2{
-                text-align: center;
-                font-size: 25px;
-            }
-
-            h3{
-                color: white;
-                font-family: 'Work Sans', sans-serif;
-                font-size: 15px;
-                text-align: bottom;
-                
-            }
-            
-            p{
-                text-align: center;
-                margin-top: 50px;
-            }
-            .button1{
-                line-height: 24px;
-                cursor: pointer;
-                font-weight: 500;
-                display: inline-flex;
-                background-color: black;
-                color: white;
-                border-radius: 28px;
-                font-size: 20px;
-                margin-right: 10px;
-                padding: 16px 32px;
-            }
-            .button1:hover{
-                background-color: #131313;
-                box-shadow: 2px 2px 4px #888888;
-            }
-            .button2{
-                line-height: 24px;
-                cursor: pointer;
-                font-weight: 500;
-                display: inline-flex;
-                background-color: black;
-                color: white;
-                border-radius: 28px;
-                font-size: 20px;
-                margin-left: 10px;
-                padding: 16px 32px;
-            }
-            .button2:hover{
-                background-color: #131313;
-                box-shadow: 2px 2px 4px #888888;
+            body{
+                background-color: rgba(209, 213, 219);
             }
         </style>
 
@@ -118,7 +21,7 @@
         <header>
          <div class="relative bg-white overflow-hidden">
           <div class="max-w-7xl mx-auto">
-            <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-10">
+            <div class="relative z-10 pb-1 bg-white sm:pb-1 md:pb-1 lg:max-w-2xl lg:w-full lg:pb-1 xl:pb-1">
               <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
                 <polygon points="50,0 100,0 50,100 0,100" />
             </svg>
@@ -144,7 +47,7 @@
             </div>
         </div>
 
-        <div class="ml-96 ">
+        <div class="ml-96 mb-5 -mt-10">
             <!-- Authentication -->
             <form  class="mx-96" method="POST" action="{{ route('logout') }}">
                 @csrf
@@ -175,116 +78,104 @@
 
 </header>
 
-
-<x-slot name="content">
-    
-</x-slot>
-
-<div class="py-12">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="p-6 bg-white border-b border-gray-200">
-                <a href="{{ route('equipments') }}" class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-gradient-to-r from-gray-600 to-gray-900 transform hover:scale-110">Adicionar equipamento</a>
-                <br>
-                <br>
-                <!-- Colocar para avisar quando não tiver chamados em aberto -->
+<div class="max-w-7xl mb-5 mx-auto mt-5 sm:px-6 lg:px-8">
+    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="p-6 bg-white border-b border-gray-200">
+            <!-- Colocar para avisar quando não tiver chamados em aberto -->
+            <div class="flex">
                 <form method="GET" action="{{ route('equipments_list') }}">
                     @csrf
-                    <div>
-                        <select name="slc-src" id="val" class="full block rounded-mg">
-                            <option disabled selected >Selecione uma opção de pesquisa</option>
-                            <option value="id">Id</option>
-                            <option value="tomb_id">Código de Tombamento</option>
-                            <option value="name">Nome</option>
-                            <option value="model">Modelo</option>
-                            <option value="manufacturer">Fabricante</option>
-                            <option value="equipment_id">Equipamento</option>
-                            <option value="status">Status</option>
-                            <option value="description">Descrição</option>
-                            <option value="created_at">Data de início</option>
-                            <option value="updated_at">Última atualização</option>
-                        </select>
-                        <div class="flex items-center justify-end mt-4">
-                            <a class="underline text-sm text-gray-600 hover:text-gray-900">
-                                {{ __('') }}
-                            </a>
-
-                            <x-button class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-gradient-to-r from-gray-600 to-gray-900 transform hover:scale-110">
-                                {{ __('Pesquisar') }}
-                            </x-button>
+                    <div class="flex">
+                        <div>
+                            <select name="slc-src" id="val" class="full block rounded-mg mr-5">
+                                <option disabled selected >Selecione uma opção de pesquisa</option>
+                                <option value="id">Id</option>
+                                <option value="tomb_id">Código de Tombamento</option>
+                                <option value="name">Nome</option>
+                                <option value="model">Modelo</option>
+                                <option value="manufacturer">Fabricante</option>
+                                <option value="equipment_id">Equipamento</option>
+                                <option value="status">Status</option>
+                                <option value="description">Descrição</option>
+                                <option value="created_at">Data de início</option>
+                                <option value="updated_at">Última atualização</option>
+                            </select>
                         </div>
-                    </form>
-                    <br>
-                    <br>
-                    <!-- Gerando lista de chamados de usuário -->
-                    @php
-                    $teste = $msg ?? '';
-                    $val = $_GET['slc-src'] ?? '';
-                    $equipments = App\Models\Equipment::all()->sortBy($val);
-                    @endphp
-                    @if($teste != '')
-                    <script>alert("{{$teste}}");</script>
-                    @endif
-                    <div>
-                       <h2>Equipamentos cadastrados {{$val}}</h2> 
-                   </div>
-                   <div class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
-                    <table class="min-w-full">
-                        <thead>
-                            <tr>
-                                <th class="px-1 py-3 border-b-2 border-gray-300 text-center leading-4 text-gray-700 tracking-wider">Cód. do Equipamento</th>
-                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Nome do Equipamento</th>
-                                <th class="px-3 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Cód. Tombamento</th>
-                                <th class="px-9 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Modelo</th>
-                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Fabricante</th>
-                                <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Descrição</th>
-                                <th class="px-14 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Status</th>
-                                <th class="px-20 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Ações</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-                @foreach($equipments as $equipment)
-                @php
-                $chamados = App\Models\Service::where('equipment_id', $equipment->id)->get();
-                $teste = strlen($chamados);
-                @endphp 
-                
-
-                <div class="p-3 border">
-                    @if($teste > 2)
-                    
-
-                    <div class="text-center text-yellow-500">
-                        <b>Há um chamado aberto para este equipamento!</b>
+                        <button class="focus:outline-none text-white text-sm py-2.5 px-5 mr-5 rounded-md bg-gradient-to-r font-bold from-gray-600 to-gray-900 transform hover:scale-110">
+                            Pesquisar
+                        </button>
                     </div>
-                    @endif
-                    
-                    <div class="my-1 px-2 border-b">
-                        <table class="min-w-full">
-                            <tr>
-                                <th class="px-2.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $equipment->id}}</th>
-                                <th class="px-2.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $equipment->name}}</th>
-                                <th class="px-2.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $equipment->tomb_id}}</th>
-                                <th class="px-2.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $equipment->model}}</th>
-                                <th class="px-2.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $equipment->manufacturer}}</th>
-                                <th class="px-2.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $equipment->description}}</th>
-                                <th class="px-2.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $equipment->status}}</th>
-                                <th class="px-1.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">
-                                    <a class="" href="{{route('show-equipment', $equipment)}}">Ver</a>
-                                </th>
-                                @if($equipment->status == 0)
-                                <th class="px-1.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap"><a class="" href="{{route('edit-equipment', $equipment)}}">Editar</a></th>
-                                <th class="px-1.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap"><a class="" onclick="javascript: if (confirm('Você realmente deseja excluir este Equipamento?'))location.href='{{ route('rm-equipment', $equipment)}}'" >Excluir</a></th>
-                                @else
-                                <th class="px-1.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap"><a class="" onclick="javascript: if (alert('Você não pode editar um equipamento em atendimento de chamado!'))location.href='{{ route('edit-equipment', $equipment)}}'">Editar</a></th>
-                                <th class="px-1.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap"><a class="" onclick="javascript: if (alert('Você não pode excluir este Equipamento!'))location.href='{{ route('rm-equipment', $equipment)}}'" >Excluir</a></th>
-                                @endif
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                @endforeach
+                </form>
+                <a href="{{ route('equipments') }}" class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-gradient-to-r font-bold from-gray-600 to-gray-900 transform hover:scale-110">Adicionar equipamento</a>
             </div>
-        </div>  
-    </x-app-layout>
+
+            <!-- Gerando lista de chamados de usuário -->
+            @php
+            $teste = $msg ?? '';
+            $val = $_GET['slc-src'] ?? '';
+            $equipments = App\Models\Equipment::all()->sortBy($val);
+            @endphp
+            @if($teste != '')
+            <script>alert("{{$teste}}");</script>
+            @endif
+            <div>
+               <h2 class="text-center text-2xl my-5">Equipamentos cadastrados {{$val}}</h2> 
+           </div>
+           <div class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 rounded-bl-lg rounded-br-lg">
+            <table class="min-w-full">
+                <thead>
+                    <tr>
+                        <th class="px-1 py-3 border-b-2 border-gray-300 text-center leading-4 text-gray-700 tracking-wider">Cód. do Equipamento</th>
+                        <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Nome do Equipamento</th>
+                        <th class="px-3 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Cód. Tombamento</th>
+                        <th class="px-9 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Modelo</th>
+                        <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Fabricante</th>
+                        <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Descrição</th>
+                        <th class="px-14 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Status</th>
+                        <th class="px-20 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-gray-700 tracking-wider">Ações</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        @foreach($equipments as $equipment)
+        @php
+        $chamados = App\Models\Service::where('equipment_id', $equipment->id)->get();
+        $teste = strlen($chamados);
+        @endphp 
+
+        <div class="p-2 border">
+            @if($teste > 2)
+
+            <div class="text-center text-yellow-500">
+                <b>Há um chamado aberto para este equipamento!</b>
+            </div>
+            @endif
+
+            <div class="my-1 px-2 border-b">
+                <table class="min-w-full">
+                    <tr>
+                        <th class="px-2.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $equipment->id}}</th>
+                        <th class="px-2.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $equipment->name}}</th>
+                        <th class="px-2.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $equipment->tomb_id}}</th>
+                        <th class="px-2.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $equipment->model}}</th>
+                        <th class="px-2.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $equipment->manufacturer}}</th>
+                        <th class="px-2.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $equipment->description}}</th>
+                        <th class="px-2.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">{{ $equipment->status}}</th>
+                        <th class="px-1.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap">
+                            <a class="bg-green-300 rounded px-1" href="{{route('show-equipment', $equipment)}}">Ver</a>
+                        </th>
+                        @if($equipment->status == 0)
+                        <th class="px-1.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap"><a class="bg-yellow-300 rounded px-1" href="{{route('edit-equipment', $equipment)}}">Editar</a></th>
+                        <th class="px-1.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap"><a class="bg-red-300 rounded px-1" onclick="javascript: if (confirm('Você realmente deseja excluir este Equipamento?'))location.href='{{ route('rm-equipment', $equipment)}}'" >Excluir</a></th>
+                        @else
+                        <th class="px-1.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap"><a class="bg-yellow-300 rounded px-1" onclick="javascript: if (alert('Você não pode editar um equipamento em atendimento de chamado!'))location.href='{{ route('edit-equipment', $equipment)}}'">Editar</a></th>
+                        <th class="px-1.5 pb-3 border-b-2 border-gray-300 text-center text-gray-700 tracking-wider max-w-0 overflow-hidden overflow-ellipsis whitespace-nowrap"><a class="bg-red-300 rounded px-1" onclick="javascript: if (alert('Você não pode excluir este Equipamento!'))location.href='{{ route('rm-equipment', $equipment)}}'" >Excluir</a></th>
+                        @endif
+                    </tr>
+                </table>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</div>  
+</x-app-layout>

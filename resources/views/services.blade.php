@@ -149,15 +149,20 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
+        @php
+        $equipamentos = App\Models\Equipment::where('status', 0)->get();
+        @endphp
+
         <form method="POST" action="{{ route('add-service') }}">
             @csrf
 
             <!-- Id do equipamento -->
-                <div>
-                    <x-label for="equipment_id" :value="__('Código')" class="text-sm font-semibold text-gray-600"/>
-
-                    <x-input id="equipment_id" class="transition duration-300 border border-gray-400 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-300 block mt-1 w-full" placeholder="Código do equipamento" type="text" name="equipment_id" :value="old('equipment_id')" required autofocus />
-                </div>
+                <select id="equipment_id" class="block mt-1 w-full" type="text" name="equipment_id"   required x-model="equipment_id" >
+                 <option class="block mt-1 w-full" value="" disabled selected>Selecione um equipamento</option>
+                 @foreach($equipamentos as $equipamento)
+                 <option class="block mt-1 w-full"  value="{{$equipamento->id}}" >{{$equipamento->name}}&ensp;|&ensp;{{$equipamento->model}}&ensp;|&ensp;{{$equipamento->manufacturer}}</option>
+                 @endforeach
+                </select>
                 <!-- Usuário -->
                 <div>
                     <x-label for="user_id" :value="__('Usuário')" class="hidden"/>
